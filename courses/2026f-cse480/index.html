@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+
+    <title>CSE251: System Programming</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/websec.css" rel="stylesheet" />
+    <link href="css/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/function.js"></script>
+    
+    <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="referrer" content="unsafe-url" />
+    <meta name="CTF-website" href="http://10.20.12.187:4000/" />
+  </head>
+  <body id="home">
+
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-xs" href="#home">CSE251: System Programming
+</a>
+          <a class="navbar-brand visible-xs" href="#home">CSE251: System Programming</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#course" target="_top">Course Information</a></li>
+            <li><a href="#syllabus" target="_top">Schedule</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="container">
+
+        <div class="section row" id="course">
+          <div class="col-sm-12 text-left">
+              <h2> <i class="fa fa-book" aria-hidden="true"></i> <strong>Course Information</strong> </h2>
+            <ul>
+              <li>Instructor: <a href="https://seongil-wi.github.io/">Seongil Wi</a></li>
+              <li>Time: Tuesday/Thursday <em>14:30 ~ 15:45</em></li>
+              <li>Location: 108-U110</li>
+              <li>TA:
+                <ul>
+                    <li>Jaeho Bae (배재호, bjho@unist.ac.kr)</li>
+                    <li>Mingi Jung (정민기, wjdaslrl4475@unist.ac.kr)</li>
+                    <li>Jongyoung Kang (강종영, jongyoung_kang@unist.ac.kr)</li>
+                    <li>Donggyu Kim (김동규, dgkim@unist.ac.kr)</li>
+                </ul>
+              </li>
+              <li>Grading:
+                <ul>
+                    <li>50% Homework</li>
+                    <li>50% Final exam (No midterm exam)</li>
+                </ul>
+              </li>
+              <li> Textbook:
+                  <ul>
+                      <Li>Randal E. Bryant and David R. O'Hallaron, <a href="https://csapp.cs.cmu.edu/">Computer Systems: A Programmer's Perspective, 3/E (CS:APP3e) 
+</a> </li>
+                  </ul>
+              </li>
+            </ul>
+                <p>Through this course, students are provided a programmer's
+                view on how computer systems execute programs, store
+                information, and communicate.  This will enable students to
+                become more effective programmers allowing students to consider
+                issues such as performance, portability and robustness when
+                programming. This course will also serve as a foundation for
+                upper level courses such as operating systems, computer
+                networks, and computer organization.</p>
+          </div>
+        </div>
+
+
+        <div class="section row" id="course">
+          <div class="col-sm-12 text-left">
+            <h3>Late Submission Policy</h3>
+            <p>Late submission will be assessed a penalty of 10% per day (We will only accept late submissions of up to 3 days).</p>
+          </div>
+        </div>
+
+
+        <div class="section row" id="syllabus">
+          <div class="col-sm-12 text-left">
+              <h2><i class="fa fa-calendar" aria-hidden="true"></i> <strong>Schedule</strong></h2>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <tr class="bg-info-top">
+                  <th><strong>Date</strong></th>
+                  <th><strong>Topic</strong></th>
+                  <th><strong>Reading</strong></th>
+                  <th><strong>Notes</strong></th>
+                </tr>
+
+
+                <tr>
+                  <td>03/03/2026</td>
+                  <td><a href="slides/lecture1-intro.pdf">Introduction</a></td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/05/2026</td>
+                  <td><a href="slides/lecture2-system basics.pdf">Basics of C and Computer Systems</a></td>
+                  <td>
+                      [CS:APP3e Ch 1]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/10/2026</td>
+                  <td><a href="slides/lecture3-bits-bytes-ints-floats.pdf">Bits, Bytes, Integers, and Floats</a></td>
+                  <td>
+                      [CS:APP3e Ch 2.1-2.3]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/12/2026</td>
+                  <td>Bits, Bytes, Integers, and Floats (2)</td>
+                  <td>
+                      [CS:APP3e Ch 2.4]<br>
+                      [<a href="https://pcv.oss-cn-shanghai.aliyuncs.com/wp-content/upload/2022/12/ieee-std-754-2019.pdf">IEEE 754</a>]
+                  </td>
+                  <td>
+                      <a href="hw/2026s-cse251-HW1.zip">HW1</a> out
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/17/2026</td>
+                  <td><a href="slides/lecture4-assembly(1).pdf">Assembly (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 3.1-3.6]<br>
+                      [<a href="metarials/x86-64-ref-sheet.pdf">x86-64 Reference Sheet</a>]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/19/2026</td>
+                  <td><a href="slides/lecture5-assembly(2).pdf">Assembly (2)</a></td>
+                  <td>
+                      [CS:APP3e Ch 3.7]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/24/2026</td>
+                  <td><a href="slides/lecture6-assembly(3).pdf">Assembly (3)</a></td>
+                  <td>
+                      [CS:APP3e Ch 3.7-3.9]
+                  </td>
+                  <td>
+                      HW1 due
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/26/2026</td>
+                  <td><a href="slides/lecture7-assembly(4).pdf">Assembly (4) & HW2 Tutorial</a></td>
+                  <td>
+                      [CS:APP3e Ch 3.10] <br>
+                      [<a href="metarials/gdb_reference.pdf">GDB cheatsheet</a>] <br>
+                      [<a href="https://insecure.org/stf/smashstack.html">Smashing the Stack for Fun and Profit</a>]
+                  </td>
+                  <td>
+                      <a href="hw/hw2.pdf">HW2</a> out
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>03/31/2026</td>
+                  <td><a href="slides/lecture8-elf-loading-memory.pdf">ELF & Loading & Memory Layout</a></td>
+                  <td>
+
+                      [CS:APP3e Ch 7.3-7.4, 7.8-7.9] <br>
+                      [<a href="metarials/elf.pdf">ELF specification</a>]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/02/2026</td>
+                  <td><a href="slides/lecture9-linking(1).pdf">Linking (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 7]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/07/2026</td>
+                  <td><a href="slides/lecture10-linking(2).pdf">Linking (2)</a></td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/09/2026</td>
+                  <td><a href="slides/lecture11-memory-hierarchy.pdf">Memory Hierarchy</a></td>
+                  <td>
+                      [CS:APP3e Ch 6.1-6.3]
+                  </td>
+                  <td>
+                      <a href="hw/hw3.pdf">HW3</a> out, HW2 due
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/14/2026</td>
+                  <td><a href="slides/lecture12-cache(1).pdf">Cache (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 6.4-6.5]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr class="bg-info">
+                  <td>04/16/2026</td>
+                  <td>No class</td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr class="bg-info">
+                  <td>04/21/2026</td>
+                  <td>Midterm week (No exam, No class)</td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr class="bg-info">
+                  <td>04/23/2026</td>
+                  <td>Midterm week (No exam, No class)</td>
+                  <td>
+                  </td>
+                  <td>
+                      HW3 due (Apr. 24, 11:59 PM)
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/28/2026</td>
+                  <td><a href="slides/lecture13-cache(2).pdf">Cache (2)</a></td>
+                  <td>
+                      [CS:APP3e Ch 6.4-6.5]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>04/30/2026</td>
+                  <td><a href="slides/lecture14-cache(3).pdf">Cache (3)</a></td>
+                  <td>
+                      [CS:APP3e Ch 6.5-6.6]
+                  </td>
+                  <td>
+                      <a href="hw/hw4.pdf">HW4</a> out
+                  </td>
+                </tr>
+
+                <tr class="bg-info">
+                  <td>05/05/2026</td>
+                  <td>Children's Day</td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/07/2026</td>
+                  <td><a href="slides/lecture15-virtual memory(1).pdf">Virtual Memory (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.1-9.5]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/12/2026</td>
+                  <td><a href="slides/lecture16-virtual memory(2).pdf">Virtual Memory (2)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.6]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/14/2026</td>
+                  <td><a href="slides/lecture17-malloc(1).pdf">Dynamic Memory Allocation (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.9.1-9.9.4]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/19/2026</td>
+                  <td><a href="slides/lecture18-malloc(2).pdf">Dynamic Memory Allocation (2)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.9.5-9.9.7]
+                  </td>
+                  <td>
+                      HW4 due (May. 18, 11:59 PM)
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/21/2026</td>
+                  <td><a href="slides/lecture19-malloc(3).pdf">Dynamic Memory Allocation (3)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.9.8-9.9.11]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/26/2026</td>
+                  <td><a href="slides/lecture20-malloc(4).pdf">Dynamic Memory Allocation (4)</a></td>
+                  <td>
+                      [CS:APP3e Ch 9.9.12-9.9.14]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>05/28/2026</td>
+                  <td><a href="slides/lecture21-process(1).pdf">Process (1)</a></td>
+                  <td>
+                      [CS:APP3e Ch 8.2-8.3]
+                  </td>
+                  <td>
+                      <a href="hw/hw5.pdf">HW5</a> out
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>06/02/2026</td>
+                  <td><a href="slides/lecture22-process(2).pdf">Process (2)</a></td>
+                  <td>
+                      [CS:APP3e Ch 8.4]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>06/04/2026</td>
+                  <td><a href="slides/lecture23-exceptions.pdf">Exceptional Control Flow </a></td>
+                  <td>
+                      [CS:APP3e Ch 8.1, 8.5]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>06/09/2026</td>
+                  <td><a href="slides/lecture24-io.pdf">System-Level I/O</a></td>
+                  <td>
+                      [CS:APP3e Ch 10]
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>06/11/2026</td>
+                  <td><a href="slides/lecture25-threads.pdf">Threads</a></td>
+                  <td>
+                      [CS:APP3e Ch 12]
+                  </td>
+                  <td>
+                      HW5 due (11:59 PM)
+                  </td>
+                </tr>
+
+                <tr class="bg-info">
+                  <td>06/16/2025</td>
+                  <td>Final week</td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                <tr class="bg-warning">
+                  <td>06/18/2025</td>
+                  <td>Final exam</td>
+                  <td>
+                      Class Time (14:30 ~ 15:45)
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="pull-right" id="back-top">
+      <a href="#home"><span class="white-font">&#x25B2;</span></a>
+    </p>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row" style="margin-top:15px;">
+          <div class="col">
+          &copy; WebSec Lab all rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
+
