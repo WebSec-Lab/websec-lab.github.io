@@ -9,7 +9,7 @@
     <meta content="WebSec Lab @ UNIST, We conduct research and develop technologies aimed at enhancing the security of the universal interface—the Web." name="description">
 
     <!-- Favicon -->
-    <link href="http://127.0.0.1:8000/img/favicon.ico?v=2" rel="icon">
+    <link href="img/favicon.ico?v=2" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
         </nav>
 
 
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+        <div class="container-fluid bg-primary py-5 bg-header">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-4 text-white animated zoomIn">Publications</h1>
@@ -70,90 +70,245 @@
 
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
 
-        <div class="container py-5">
-                <h2><i class="fas fa-book"></i> Publications</h2>
-                <br>
-                <ol>
-                    <li>
-                        <strong>The s-Hypercore: A Cohesive Subhypergraph Model Based on Decayed Engagement Strength (<i>to appear</i>)</strong><br>
-                        Minseok Kim, Dahee Kim, Junghoon Kim, <strong>Seongil Wi</strong>, and Jonghyeok Park <br>
-                        In <em>IEEE Transactions on Knowledge and Data Engineering (<strong>TKDE</strong>)</em>, 2027
-                    </li>
-                    <br>
+        <div class="container pt-2 pb-4">
 
-                    <li>
-                        <strong>Testing IFrame Rendering in Web Browsers (<i>to appear</i>)</strong><br>
-                        Dahyeon Park,  <strong>Seongil Wi</strong>, Yuseok Jeon, and Mijung Kim <br>
-                        In <em>Proceedings of the IEEE/ACM International Conference on Automated Software Engineering (<strong>ASE</strong>)</em>, 2026 
-                    </li>
-                    <br>
-                    <li>
-                        <strong>PhishXGraph: Robust Phishing Website Detection using Cross-Layer Interaction Graphs (<i>to appear</i>)</strong><br>
-                        <strong>Jaeho Bae</strong>, Junghoon Kim, Doowon Kim, and <strong>Seongil Wi</strong> <br>
-                        In <em>Proceedings of the European Symposium on Research in Computer Security (<strong>ESORICS</strong>)</em>, 2026 
-                    </li>
-                    <br>
-                    <li>
-                        <strong>BUIzz: Finding Policy Enforcement Bugs via Interaction Simulation on the Browser User Interface (<a href="./papers/usenixsecurity26-jung.pdf">Paper</a>)(<a href="https://github.com/WebSec-Lab/BUIzz">GitHub</a>)</strong><br>
-                        <strong>Mingi Jung</strong>, <strong>Donggyu Kim</strong>, Mijung Kim, and <strong>Seongil Wi</strong> <br>
-                        In <em>Proceedings of the USENIX Security Symposium (<strong>USENIX Security</strong>)</em>, 2026 (<strong>Acceptance Rate: 11.96％</strong>) <br>
-                        <i class="fa fa-trophy" style="color: #d4af37;"></i> USENIX Internet Defense Prize (funded by Meta)
-                    </li>
-                    <br>
-                    <li>
-                        <strong>SandVenture: Escaping JavaScript Sandboxes with Objective-driven Input Generation (<a href="./papers/eurosp26-jung.pdf">Paper</a>)(<a href="https://github.com/WebSec-Lab/SandVenture">GitHub</a>)</strong><br>
-                        <strong>Mingi Jung</strong>, Hyeon Heo, and <strong>Seongil Wi</strong> <br>
-                        In <em>Proceedings of the IEEE European Symposium on Security and Privacy (<strong>EuroS&P</strong>)</em>, 2026 (<strong>Acceptance Rate: 17.83％</strong>)
-                    </li>
-                    <br>
-                    <li>
-                        <strong>DiffCSP: Finding Browser Bugs in Content Security Policy Enforcement through Differential Testing (<a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f200_paper.pdf">Paper</a>)(<a href="https://github.com/WSP-LAB/diffcsp">GitHub</a>)</strong><br>
-                        <strong>Seongil Wi</strong>, Trung Tin Nguyen, Jihwan Kim, Ben Stock, and Sooel Son <br>
-                        In <em>Proceedings of the Network and Distributed System Security Symposium (<strong>NDSS</strong>)</em>, 2023 (<strong>Acceptance Rate: 16.2％</strong>)
-                    </li>
-                    <br>
-                    <li>
-                        <strong>HearMeOut: Detecting Voice Phishing Activities in Android (<a href="https://seongil-wi.github.io/papers/HearMeOut_Mobisys.pdf">Paper</a>)(<a href="https://github.com/WSP-LAB/hearmeout">GitHub</a>)</strong><br>
-                        Joongyum Kim, Jihwan Kim, <strong>Seongil Wi</strong>, Yongdae Kim, and Sooel Son <br>
-                        In <em>Proceedings of the ACM International Conference on Mobile Systems, Applications, and Services (<strong>MobiSys</strong>)</em>, 2022 (<strong>Acceptance Rate: 21％</strong>)
-                    </li>
-                    <br>
-                    <li>
-                        <strong>HiddenCPG: Large-Scale Vulnerable Clone Detection Using Subgraph Isomorphism of Code Property Graphs (<a href="https://wsp-lab.github.io/papers/wi-hiddencpg-www22.pdf">Paper</a>)(<a href="https://github.com/WSP-LAB/HiddenCPG">GitHub</a>)(<a href="HiddenCPG_WWW.pdf">Slides</a>)</strong><br>
-                        <strong>Seongil Wi</strong>, Sijae Woo, Joyce Whang, Sooel Son <br>
-                        In <em>Proceedings of the Web Conference 2022 (<strong>WWW</strong>)</em>, 2022 (<strong>Acceptance Rate: 17.7％</strong>)
-                    </li>
-                    <br>
-
-                    <li>
-                        <strong>Link: Black-Box Detection of Cross-Site Scripting Vulnerabilities Using Reinforcement Learning (<a href="https://wsp-lab.github.io/papers/lee-link-www22.pdf">Paper</a>)(<a href="https://github.com/WSP-LAB/Link">GitHub</a>)(<a href="Link_WWW.pdf">Slides</a>)</strong><br>
-                        Soyoung Lee, <strong>Seongil Wi</strong>, Sooel Son <br>
-                        In <em>Proceedings of the Web Conference 2022 (<strong>WWW</strong>)</em>, 2022 (<strong>Acceptance Rate: 17.7％</strong>)
-                    </li>
-                    <br>
-                    <li>
-                        <strong>FUSE: Finding File Upload Bugs via Penetration Testing (<a href="https://www.ndss-symposium.org/wp-content/uploads/2020/02/23126.pdf">Paper</a>)(<a href="https://github.com/WSP-LAB/FUSE">GitHub</a>)(<a href="https://www.ndss-symposium.org/wp-content/uploads/23126-slides.pdf">Slides</a>)(<a href="https://www.zdnet.com/article/academics-find-30-file-upload-vulnerabilities-in-23-web-apps-cmses-and-forums/">Media</a>)</strong><br>
-                        Taekjin Lee, <strong>Seongil Wi (co-leading author)</strong>, Suyoung Lee, and Sooel Son <br>
-                        In <em>Proceedings of the Network and Distributed System Security Symposium (<strong>NDSS</strong>)</em>, 2020 (<strong>Acceptance Rate: 17.4％</strong>)
-                    </li>
-                    <br>
-
-                    <li>
-                        <strong>FSF: Code Coverage-driven Fuzzing for Software-Defined Networking (<a href="https://seongil-wi.github.io/papers/Kim2020_WISA.pdf">Paper</a>)</strong><br>
-                        Hyuntae Kim, <strong>Seongil Wi</strong>, Hyunjoo Lee, and Sooel Son <br>
-                        In <em>Proceedings of the World Conference on Information Security Applications (WISA)</em>, 2019
-                    </li>
-                    <br>
-
-                    <li>
-                        <strong>Git-based CTF: A Simple and Effective Approach to Organizing In-Course Attack-and-Defense Security Competition (<a href="https://www.usenix.org/system/files/conference/ase18/ase18-paper_wi.pdf">Paper</a>)(<a href="https://github.com/SoftSec-KAIST/GitCTF">GitHub</a>)(<a href="https://www.usenix.org/sites/default/files/conference/protected-files/ase18_slides_wi.pdf">Slides</a>)</strong><br>
-                        <strong>Seongil Wi</strong>, Jaeseung Choi, and Sang Kil Cha<br>
-                        In <em>Proceedings of the USENIX Workshop on Advances in Security Education (USENIX ASE)</em>, 2018
-                    </li>
-                    <br>
-                </ol> 
-                </div>
+            <div class="section-title position-relative pb-3 mb-4">
+                <h5 class="fw-bold text-primary text-uppercase">Research</h5>
+                <h1 class="mb-0">Publications</h1>
             </div>
+            <p class="pub-legend">Names in dark type are WebSec Lab members.</p>
+
+            <!-- ================================================================
+                 HOW TO EDIT THIS LIST
+                 - One <article class="pub-entry"> is the copy-paste unit.
+                 - A new year: copy a whole <section class="pub-year"> block to
+                   the TOP of .pub-timeline and change the year label.
+                 - Lab members are always <span class="lab">Name</span>.
+                 - Acceptance rate goes at the end of the .pub-where line,
+                   joined with &middot; (never bold, ASCII % only).
+                 - "To appear" papers: add <span class="pub-status">To appear</span>
+                   next to the venue badge; remove it once published.
+                 - Award papers: add class "pub-award" to the article, put the
+                   .pub-award-banner div first inside it, and place the entry
+                   FIRST within its year. Reuse this banner; no new gold styles.
+                 - Link icons: Paper = far fa-file-pdf, GitHub = fab fa-github,
+                   Slides = far fa-file-powerpoint, Media = far fa-newspaper.
+                 ================================================================ -->
+            <div class="pub-timeline">
+
+                <!-- ============ 2027 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2027</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">TKDE</span>
+                                <span class="pub-status">To appear</span>
+                            </div>
+                            <h3 class="pub-title">The s-Hypercore: A Cohesive Subhypergraph Model Based on Decayed Engagement Strength</h3>
+                            <p class="pub-authors">Minseok Kim, Dahee Kim, Junghoon Kim, <span class="lab">Seongil Wi</span>, and Jonghyeok Park</p>
+                            <p class="pub-where">IEEE Transactions on Knowledge and Data Engineering, 2027</p>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2026 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2026</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry pub-award">
+                            <div class="pub-award-banner">
+                                <i class="fas fa-trophy"></i> USENIX Internet Defense Prize <small>funded by Meta</small>
+                            </div>
+                            <div class="pub-tags">
+                                <span class="pub-venue">USENIX Security</span>
+                            </div>
+                            <h3 class="pub-title">BUIzz: Finding Policy Enforcement Bugs via Interaction Simulation on the Browser User Interface</h3>
+                            <p class="pub-authors"><span class="lab">Mingi Jung</span>, <span class="lab">Donggyu Kim</span>, Mijung Kim, and <span class="lab">Seongil Wi</span></p>
+                            <p class="pub-where">Proceedings of the USENIX Security Symposium, 2026 &middot; Acceptance rate 11.96%</p>
+                            <nav class="pub-links">
+                                <a href="./papers/usenixsecurity26-jung.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WebSec-Lab/BUIzz"><i class="fab fa-github"></i>GitHub</a>
+                            </nav>
+                        </article>
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">ASE</span>
+                                <span class="pub-status">To appear</span>
+                            </div>
+                            <h3 class="pub-title">Testing IFrame Rendering in Web Browsers</h3>
+                            <p class="pub-authors">Dahyeon Park, <span class="lab">Seongil Wi</span>, Yuseok Jeon, and Mijung Kim</p>
+                            <p class="pub-where">Proceedings of the IEEE/ACM International Conference on Automated Software Engineering, 2026</p>
+                        </article>
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">ESORICS</span>
+                                <span class="pub-status">To appear</span>
+                            </div>
+                            <h3 class="pub-title">PhishXGraph: Robust Phishing Website Detection using Cross-Layer Interaction Graphs</h3>
+                            <p class="pub-authors"><span class="lab">Jaeho Bae</span>, Junghoon Kim, Doowon Kim, and <span class="lab">Seongil Wi</span></p>
+                            <p class="pub-where">Proceedings of the European Symposium on Research in Computer Security, 2026</p>
+                        </article>
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">EuroS&amp;P</span>
+                            </div>
+                            <h3 class="pub-title">SandVenture: Escaping JavaScript Sandboxes with Objective-driven Input Generation</h3>
+                            <p class="pub-authors"><span class="lab">Mingi Jung</span>, Hyeon Heo, and <span class="lab">Seongil Wi</span></p>
+                            <p class="pub-where">Proceedings of the IEEE European Symposium on Security and Privacy, 2026 &middot; Acceptance rate 17.83%</p>
+                            <nav class="pub-links">
+                                <a href="./papers/eurosp26-jung.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WebSec-Lab/SandVenture"><i class="fab fa-github"></i>GitHub</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2023 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2023</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">NDSS</span>
+                            </div>
+                            <h3 class="pub-title">DiffCSP: Finding Browser Bugs in Content Security Policy Enforcement through Differential Testing</h3>
+                            <p class="pub-authors"><span class="lab">Seongil Wi</span>, Trung Tin Nguyen, Jihwan Kim, Ben Stock, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the Network and Distributed System Security Symposium, 2023 &middot; Acceptance rate 16.2%</p>
+                            <nav class="pub-links">
+                                <a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f200_paper.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WSP-LAB/diffcsp"><i class="fab fa-github"></i>GitHub</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2022 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2022</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">MobiSys</span>
+                            </div>
+                            <h3 class="pub-title">HearMeOut: Detecting Voice Phishing Activities in Android</h3>
+                            <p class="pub-authors">Joongyum Kim, Jihwan Kim, <span class="lab">Seongil Wi</span>, Yongdae Kim, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the ACM International Conference on Mobile Systems, Applications, and Services, 2022 &middot; Acceptance rate 21%</p>
+                            <nav class="pub-links">
+                                <a href="https://seongil-wi.github.io/papers/HearMeOut_Mobisys.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WSP-LAB/hearmeout"><i class="fab fa-github"></i>GitHub</a>
+                            </nav>
+                        </article>
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">WWW</span>
+                            </div>
+                            <h3 class="pub-title">HiddenCPG: Large-Scale Vulnerable Clone Detection Using Subgraph Isomorphism of Code Property Graphs</h3>
+                            <p class="pub-authors"><span class="lab">Seongil Wi</span>, Sijae Woo, Joyce Whang, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the Web Conference, 2022 &middot; Acceptance rate 17.7%</p>
+                            <nav class="pub-links">
+                                <a href="https://wsp-lab.github.io/papers/wi-hiddencpg-www22.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WSP-LAB/HiddenCPG"><i class="fab fa-github"></i>GitHub</a>
+                                <a href="HiddenCPG_WWW.pdf"><i class="far fa-file-powerpoint"></i>Slides</a>
+                            </nav>
+                        </article>
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">WWW</span>
+                            </div>
+                            <h3 class="pub-title">Link: Black-Box Detection of Cross-Site Scripting Vulnerabilities Using Reinforcement Learning</h3>
+                            <p class="pub-authors">Soyoung Lee, <span class="lab">Seongil Wi</span>, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the Web Conference, 2022 &middot; Acceptance rate 17.7%</p>
+                            <nav class="pub-links">
+                                <a href="https://wsp-lab.github.io/papers/lee-link-www22.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WSP-LAB/Link"><i class="fab fa-github"></i>GitHub</a>
+                                <a href="Link_WWW.pdf"><i class="far fa-file-powerpoint"></i>Slides</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2020 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2020</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">NDSS</span>
+                            </div>
+                            <h3 class="pub-title">FUSE: Finding File Upload Bugs via Penetration Testing</h3>
+                            <p class="pub-authors">Taekjin Lee, <span class="lab">Seongil Wi</span> (co-leading author), Suyoung Lee, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the Network and Distributed System Security Symposium, 2020 &middot; Acceptance rate 17.4%</p>
+                            <nav class="pub-links">
+                                <a href="https://www.ndss-symposium.org/wp-content/uploads/2020/02/23126.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/WSP-LAB/FUSE"><i class="fab fa-github"></i>GitHub</a>
+                                <a href="https://www.ndss-symposium.org/wp-content/uploads/23126-slides.pdf"><i class="far fa-file-powerpoint"></i>Slides</a>
+                                <a href="https://www.zdnet.com/article/academics-find-30-file-upload-vulnerabilities-in-23-web-apps-cmses-and-forums/"><i class="far fa-newspaper"></i>Media</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2019 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2019</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">WISA</span>
+                            </div>
+                            <h3 class="pub-title">FSF: Code Coverage-driven Fuzzing for Software-Defined Networking</h3>
+                            <p class="pub-authors">Hyuntae Kim, <span class="lab">Seongil Wi</span>, Hyunjoo Lee, and Sooel Son</p>
+                            <p class="pub-where">Proceedings of the World Conference on Information Security Applications, 2019</p>
+                            <nav class="pub-links">
+                                <a href="https://seongil-wi.github.io/papers/Kim2020_WISA.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- ============ 2018 ============ -->
+                <section class="pub-year">
+                    <div class="pub-year-label">2018</div>
+                    <div class="pub-year-list">
+
+                        <article class="pub-entry">
+                            <div class="pub-tags">
+                                <span class="pub-venue">USENIX ASE</span>
+                            </div>
+                            <h3 class="pub-title">Git-based CTF: A Simple and Effective Approach to Organizing In-Course Attack-and-Defense Security Competition</h3>
+                            <p class="pub-authors"><span class="lab">Seongil Wi</span>, Jaeseung Choi, and Sang Kil Cha</p>
+                            <p class="pub-where">Proceedings of the USENIX Workshop on Advances in Security Education, 2018</p>
+                            <nav class="pub-links">
+                                <a href="https://www.usenix.org/system/files/conference/ase18/ase18-paper_wi.pdf"><i class="far fa-file-pdf"></i>Paper</a>
+                                <a href="https://github.com/SoftSec-KAIST/GitCTF"><i class="fab fa-github"></i>GitHub</a>
+                                <a href="https://www.usenix.org/sites/default/files/conference/protected-files/ase18_slides_wi.pdf"><i class="far fa-file-powerpoint"></i>Slides</a>
+                            </nav>
+                        </article>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
 
 
     <!-- Footer Start -->

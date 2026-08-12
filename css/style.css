@@ -496,3 +496,257 @@ h6,
         margin-bottom: -75px;
     }
 }
+
+
+/*** Publications Timeline ***/
+.pub-timeline {
+    /* Coupled geometry — change these only, everything else derives from them */
+    --rail-w: 96px;       /* width of the year rail; the spine sits on its right edge */
+    --list-pad: 36px;     /* gap between the spine and the entries */
+    --sticky-top: 100px;  /* fixed navbar height + breathing room */
+    position: relative;
+    max-width: 900px;
+}
+
+.pub-timeline::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 0;
+    left: calc(var(--rail-w) - 1px);
+    width: 2px;
+    background: linear-gradient(to bottom, #BEE3F5 0%, #DCEDF7 85%, rgba(220, 237, 247, 0) 100%);
+}
+
+.pub-legend {
+    font-size: .85rem;
+    color: #93A1B0;
+    margin-bottom: 44px;
+}
+
+.pub-year {
+    display: grid;
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+}
+
+.pub-year-label {
+    grid-column: 1;
+    position: sticky;
+    top: var(--sticky-top);
+    align-self: start;
+    padding-right: 26px;
+    text-align: right;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--dark);
+}
+
+.pub-year-list {
+    grid-column: 2;
+    padding-left: var(--list-pad);
+    padding-bottom: 38px;
+}
+
+.pub-entry {
+    position: relative;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #E8F1F6;
+}
+
+.pub-entry:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 6px;
+}
+
+.pub-entry::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: calc(-1 * var(--list-pad) - 6px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2px solid var(--primary);
+    transition: .3s;
+}
+
+.pub-entry:hover::before {
+    background: var(--primary);
+}
+
+.pub-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pub-venue {
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .4px;
+    color: #067EB0;
+    background: #E1F4FC;
+    padding: 3px 11px;
+    border-radius: 4px;
+}
+
+.pub-status {
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .4px;
+    color: #2C8A46;
+    background: #E4F5E9;
+    padding: 3px 11px;
+    border-radius: 4px;
+}
+
+.pub-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.125rem;
+    /* overrides the template's h3 { font-weight: 700 !important } near the top of this file */
+    font-weight: 600 !important;
+    line-height: 1.5;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.pub-authors {
+    font-size: .9rem;
+    color: #6B6A75;
+    margin-bottom: 2px;
+}
+
+.pub-authors .lab {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.pub-where {
+    font-size: .82rem;
+    color: #98A0AC;
+    margin-bottom: 12px;
+}
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+
+.pub-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7A8AA0;
+    text-decoration: none;
+    border-bottom: 1px solid #D7E4EC;
+    padding-bottom: 2px;
+    transition: .3s;
+}
+
+.pub-links a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.pub-links a i {
+    font-size: .85rem;
+}
+
+/* Award entry — the only card in the timeline */
+.pub-entry.pub-award {
+    background: #FFFFFF;
+    border: 1px solid rgba(6, 163, 218, .35);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(9, 30, 62, .08);
+    padding: 18px 22px 20px;
+    margin-bottom: 24px;
+}
+
+.pub-entry.pub-award::before {
+    top: 12px;
+    background: #F5B940;
+    border-color: #FFFFFF;
+    box-shadow: 0 0 0 2px #F5B940;
+}
+
+.pub-award-banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    margin: -18px -22px 16px;
+    padding: 8px 22px;
+    border-radius: 7px 7px 0 0;
+    background: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: #FFD778;
+}
+
+.pub-award-banner .fa-trophy {
+    color: #F5B940;
+}
+
+.pub-award-banner small {
+    font-weight: 400;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, .6);
+}
+
+/* Mobile: single column, spine hugs the left edge, sticky off */
+@media (max-width: 767.98px) {
+    .pub-timeline {
+        --list-pad: 30px;
+    }
+
+    .pub-timeline::before {
+        left: 9px;
+    }
+
+    .pub-year {
+        display: block;
+    }
+
+    .pub-year-label {
+        position: relative;
+        top: auto;
+        text-align: left;
+        padding: 0 0 14px var(--list-pad);
+        font-size: 1.35rem;
+    }
+
+    .pub-year-list {
+        padding-left: var(--list-pad);
+        padding-bottom: 18px;
+    }
+
+    .pub-entry::before {
+        left: calc(-1 * var(--list-pad) + 4px);
+    }
+
+    .pub-entry.pub-award {
+        padding: 16px 16px 18px;
+    }
+
+    .pub-award-banner {
+        margin: -16px -16px 14px;
+        padding: 8px 16px;
+    }
+}
