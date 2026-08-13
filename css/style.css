@@ -772,6 +772,12 @@ h6,
     color: #8C99A8;
 }
 
+.sponsor-korean {
+    font-size: .78rem;
+    color: #A9B4C0;
+    margin-top: 2px;
+}
+
 /* Mobile: single column, spine hugs the left edge, sticky off */
 @media (max-width: 767.98px) {
     .pub-timeline {
