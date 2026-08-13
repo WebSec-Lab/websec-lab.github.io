@@ -9,7 +9,7 @@
     <meta content="WebSec Lab @ UNIST, We conduct research and develop technologies aimed at enhancing the security of the universal interface—the Web." name="description">
 
     <!-- Favicon -->
-    <link href="http://127.0.0.1:8000/img/favicon.ico?v=2" rel="icon">
+    <link href="img/favicon.ico?v=2" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,15 +29,13 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
-    <head>
-  <!-- meta -->
-  <meta property="og:url" content="https://websec-lab.github.io/">
-  <meta property="og:title" content="WebSec @ UNIST">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="img/logo_full.png">
-  <meta property="og:description" content="We Aim to Make World's Web Secure!">
-</head>
+
+    <!-- Open Graph -->
+    <meta property="og:url" content="https://websec-lab.github.io/">
+    <meta property="og:title" content="WebSec Lab @ UNIST">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://websec-lab.github.io/img/logo_full.png">
+    <meta property="og:description" content="We Aim to Make World's Web Secure!">
 </head>
 
 <body>
@@ -55,24 +53,22 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="people.html" class="nav-item nav-link">People</a>
+                    <a href="research.html" class="nav-item nav-link">Research</a>
                     <a href="publications.html" class="nav-item nav-link">Publications</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="sponsors.html" class="nav-item nav-link">Sponsors</a>
+                    <a href="joining.html" class="nav-item nav-link">Joining Us</a>
                 </div>
             </div>
         </nav>
 
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="img/background.png" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn"><img src="img/logo_white.png" style="width:100%;"></h1>
-                            <a href="#aboutus" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">About us</a>
-                            <a href="contact.html" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact us</a>
-                        </div>
-                    </div>
+        <div class="container-fluid bg-header hero-header">
+            <div class="hero-content">
+                <p class="hero-kicker animated slideInDown">WebSec Lab @ UNIST</p>
+                <h1 class="hero-title animated zoomIn">We Aim to Make<br class="d-none d-md-block"> the World's Web Secure!</h1>
+                <p class="hero-sub animated fadeIn">We find and report web threats before attackers do &mdash; from browser internals to AI agents.</p>
+                <div>
+                    <a href="#aboutus" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">About us</a>
+                    <a href="joining.html" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Join us</a>
                 </div>
             </div>
         </div>
@@ -80,103 +76,42 @@
     <!-- Navbar & Carousel End -->
 
 
-    <!-- Full Screen Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Full Screen Search End -->
-
-
-    <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0">
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-map-marker-alt text-primary fa-2x"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Location</h5>
-                            <h4 class="text-white mb-0">Bldg. 106 <br>Rm. 803-1</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-envelope-open text-white fa-2x"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-primary mb-0">Email</h5>
-                            <h4 class="mb-0">seongil.wi (at) unist.ac.kr</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-primary fa-2x"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Call</h5>
-                            <h4 class="text-white mb-0">+82 52 217 2282</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Facts Start -->
-
-
     <!-- About Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" id="aboutus">
-        <div class="container py-5">
+        <div class="container pt-2 pb-3">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
+                    <div class="section-title position-relative pb-3 mb-4">
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
-                        <h1 class="mb-0">We Aim to Make World's Web Secure!</h1>
+                        <h1 class="mb-0">Who We Are</h1>
                     </div>
-                    <p>In our laboratory, Web Security (WebSec) Lab, we conduct
-                    research and develop technologies aimed at enhancing the
-                    security of the universal interface—the Web. Our primary
-                    goal is to contribute to the global effort of ensuring the
-                    security of the world's web by proactively detecting and
-                    reporting web threats. We achieve this through various
-                    cutting-edge technologies, including penetration testing,
-                    fuzz testing, static analysis, and artificial intelligence.
-                    </p>
-                    <p> In addition, our lab conducts research on AI security
-                    from two complementary perspectives: security for AI and AI
-                    for security. For security for AI, we study emerging
-                    security threats in AI agents, such as prompt injection and
-                    jailbreak attacks, and develop systematic methods to
-                    understand, detect, and prevent them. For AI for security,
-                    we investigate how AI can be used to enhance security
-                    testing, vulnerability analysis, defense mechanisms, and
-                    automated patch generation.
+                    <p class="about-lead">
+                        We build technologies that secure the universal interface&mdash;the
+                        Web&mdash;by proactively finding and reporting threats, and we study
+                        AI security in both directions: securing AI agents and using AI to
+                        find and fix vulnerabilities.
                     </p>
 
-                    <div class="row g-0 mb-3">
-                        <div class="col-sm-8 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>We are looking for motivated collaborators (graduate/undergraduate students). Please feel free to <a href="contact.html">contact us</a>, if you’re interested in web security.</h5>
- 
+                    <div class="about-areas">
+                        <a href="research.html" class="about-area">
+                            <span class="research-icon research-icon--cyan"><i class="far fa-window-maximize"></i></span>
+                            Browser &amp; Web Platform Security
+                        </a>
+                        <a href="research.html" class="about-area">
+                            <span class="research-icon research-icon--green"><i class="fas fa-bug"></i></span>
+                            Web Application Security
+                        </a>
+                        <a href="research.html" class="about-area">
+                            <span class="research-icon research-icon--gold"><i class="fas fa-user-secret"></i></span>
+                            Web Privacy
+                        </a>
+                        <a href="research.html" class="about-area">
+                            <span class="research-icon research-icon--navy"><i class="fas fa-robot"></i></span>
+                            AI Security
+                        </a>
                     </div>
-                </div>
+
+                    <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>We are looking for motivated collaborators (graduate/undergraduate students) &mdash; interested in web security? See <a href="joining.html">how to join us</a>.</p>
                 </div>
                 <div class="col-lg-5">
                     <img src="img/team_photo.jpg" alt="WebSec Lab Team" style="
@@ -193,12 +128,101 @@
     <!-- About End -->
 
 
+    <!-- News Start -->
+    <div class="container-fluid pb-5 wow fadeInUp" data-wow-delay="0.1s" id="news">
+        <div class="container pb-3">
+
+            <div class="section-title position-relative pb-3 mb-4">
+                <h5 class="fw-bold text-primary text-uppercase">News</h5>
+                <h1 class="mb-0">Recent News</h1>
+            </div>
+
+            <!-- ================================================================
+                 HOW TO EDIT THIS LIST
+                 - One <div class="news-item"> is the copy-paste unit; newest
+                   entries go on TOP.
+                 - Pick ONE icon class per item:
+                     paper  = news-icon--paper  + <i class="far fa-file-alt">
+                     award  = news-icon--award  + <i class="fas fa-trophy">
+                     grant  = news-icon--grant  + <i class="fas fa-coins">
+                     people = news-icon--people + <i class="fas fa-user-plus">
+                 - Highlight key names/venues with <span class="hl">...</span>
+                   (dark ink, not bold). Use it sparingly.
+                 ================================================================ -->
+            <div class="news-list">
+
+                <div class="news-item">
+                    <span class="news-date">Aug 2026</span>
+                    <span class="news-icon news-icon--award"><i class="fas fa-trophy"></i></span>
+                    <p class="news-text">Our lab received the <span class="hl">USENIX Internet Defense Prize</span> (funded by Meta) at USENIX Security 2026!</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Aug 2026</span>
+                    <span class="news-icon news-icon--paper"><i class="far fa-file-alt"></i></span>
+                    <p class="news-text">A paper has been accepted to <span class="hl">IEEE TKDE 2027</span>.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Jun 2026</span>
+                    <span class="news-icon news-icon--paper"><i class="far fa-file-alt"></i></span>
+                    <p class="news-text">A paper has been accepted to <span class="hl">ASE 2026</span>.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Jun 2026</span>
+                    <span class="news-icon news-icon--paper"><i class="far fa-file-alt"></i></span>
+                    <p class="news-text">A paper has been accepted to <span class="hl">ESORICS 2026</span>.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">May 2026</span>
+                    <span class="news-icon news-icon--paper"><i class="far fa-file-alt"></i></span>
+                    <p class="news-text">A paper has been accepted to <span class="hl">USENIX Security 2026</span>.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Apr 2026</span>
+                    <span class="news-icon news-icon--award"><i class="fas fa-trophy"></i></span>
+                    <p class="news-text">Prof. Seongil Wi received the <span class="hl">IB UNITE Award</span>, a faculty award at UNIST.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Apr 2026</span>
+                    <span class="news-icon news-icon--grant"><i class="fas fa-coins"></i></span>
+                    <p class="news-text">Our lab is funded by the IITP <span class="hl">Hyper-scale Industrial AI</span> R&amp;D program (초거대산업AI연구지원).</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Mar 2026</span>
+                    <span class="news-icon news-icon--grant"><i class="fas fa-coins"></i></span>
+                    <p class="news-text">Our lab is funded by the <span class="hl">INNOCORE</span> program (INNOCORE 사업).</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Mar 2026</span>
+                    <span class="news-icon news-icon--paper"><i class="far fa-file-alt"></i></span>
+                    <p class="news-text">A paper has been accepted to <span class="hl">EuroS&amp;P 2026</span>.</p>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Mar 2026</span>
+                    <span class="news-icon news-icon--people"><i class="fas fa-user-plus"></i></span>
+                    <p class="news-text"><span class="hl">Donggyu Kim</span>, <span class="hl">Chaeyoung Moon</span>, and <span class="hl">Jongyoung Kang</span> joined the lab. Welcome!</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- News End -->
+
+
     <!-- Footer Start -->
-    <div class="container-fluid text-white" style="background: #001b54;">
+    <div class="container-fluid text-white" style="background: var(--dark);">
         <div class="container text-center">
             <div class="row justify-content-end">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">WebSec Lab @ UNIST </a>. All Rights Reserved. 
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="index.html">WebSec Lab @ UNIST</a>. All Rights Reserved. 
 			            </p>
                     </div>
             </div>

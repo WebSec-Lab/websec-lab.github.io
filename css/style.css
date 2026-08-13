@@ -391,9 +391,11 @@ h6,
 /*** Team ***/
 .team-item {
     width: 240px;
-    height: 440px;
-    margin:0 auto;
-    transition: .5s;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #E3EEF5;
+    border-radius: 8px;
+    transition: .3s;
 }
 
 .team-social {
@@ -416,7 +418,9 @@ h6,
 }
 
 .team-item:hover {
-    box-shadow: 0 0 30px #DDDDDD;
+    border-color: rgba(6, 163, 218, .45);
+    box-shadow: 0 10px 30px rgba(9, 30, 62, .08);
+    transform: translateY(-3px);
 }
 
 .team-item:hover .team-social {
@@ -449,9 +453,9 @@ h6,
 
 .team-item .team-img img,
 .blog-item .blog-img img  {
-    width:200px;
+    width: 100%;
     height: 310px;
-    object-fit: cover; 
+    object-fit: cover;
     transition: .5s;
 }
 
@@ -462,14 +466,6 @@ h6,
 
 
 /*** Miscellaneous ***/
-@media (min-width: 991.98px) {
-    .facts {
-        position: relative;
-        margin-top: -75px;
-        z-index: 1;
-    }
-}
-
 .back-to-top {
     position: fixed;
     display: none;
@@ -710,6 +706,72 @@ h6,
     color: rgba(255, 255, 255, .6);
 }
 
+/*** Sponsors ***/
+.sponsor-lead {
+    max-width: 720px;
+    font-size: .95rem;
+    color: #6B6A75;
+    margin-bottom: 44px;
+}
+
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 24px;
+}
+
+.sponsor-card {
+    background: #FFFFFF;
+    border: 1px solid #E3EEF5;
+    border-radius: 8px;
+    padding: 30px 22px 24px;
+    text-align: center;
+    transition: .3s;
+}
+
+.sponsor-card:hover {
+    border-color: rgba(6, 163, 218, .45);
+    box-shadow: 0 10px 30px rgba(9, 30, 62, .08);
+    transform: translateY(-3px);
+}
+
+.sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    margin-bottom: 20px;
+}
+
+.sponsor-logo img {
+    max-height: 44px;
+    max-width: 88%;
+    object-fit: contain;
+}
+
+/* Text tile used until a real logo file is available */
+.sponsor-logo-text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--dark);
+}
+
+.sponsor-name {
+    font-family: 'Nunito', sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.sponsor-fullname {
+    font-size: .8rem;
+    line-height: 1.45;
+    color: #8C99A8;
+}
+
 /* Mobile: single column, spine hugs the left edge, sticky off */
 @media (max-width: 767.98px) {
     .pub-timeline {
@@ -749,4 +811,419 @@ h6,
         margin: -16px -16px 14px;
         padding: 8px 16px;
     }
+}
+
+
+/*** Hero (home page) ***/
+.hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 620px;
+    /* top padding clears the absolute navbar overlaying the hero */
+    padding: 150px 24px 90px;
+}
+
+.hero-kicker {
+    font-family: 'Nunito', sans-serif;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #7AD9F5;
+    margin-bottom: 18px;
+}
+
+.hero-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: #FFFFFF;
+    max-width: 860px;
+    margin: 0 auto 18px;
+}
+
+.hero-sub {
+    font-size: clamp(.95rem, 1.4vw, 1.05rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .75);
+    max-width: 620px;
+    margin: 0 auto 34px;
+}
+
+@media (max-width: 991.98px) {
+    /* navbar is in normal flow below 992px, so less clearance is needed */
+    .hero-header {
+        min-height: 480px;
+        padding: 80px 20px 70px;
+    }
+}
+
+
+/*** About (home page) ***/
+.about-lead {
+    font-size: .95rem;
+    line-height: 1.7;
+    color: #6B6A75;
+    margin-bottom: 24px;
+}
+
+.about-areas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+.about-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #FFFFFF;
+    border: 1px solid #E3EEF5;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--dark);
+    text-decoration: none;
+    transition: .3s;
+}
+
+.about-area:hover {
+    border-color: rgba(6, 163, 218, .45);
+    box-shadow: 0 10px 30px rgba(9, 30, 62, .08);
+    transform: translateY(-2px);
+    color: var(--primary);
+}
+
+.about-area .research-icon {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    font-size: .9rem;
+    margin-bottom: 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 575.98px) {
+    .about-areas {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/*** News (home page) ***/
+.news-list {
+    max-width: 900px;
+}
+
+.news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+}
+
+.news-item + .news-item {
+    border-top: 1px solid #E8F1F6;
+}
+
+.news-date {
+    flex: 0 0 86px;
+    margin-top: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8C99A8;
+}
+
+.news-icon {
+    flex: 0 0 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: .8rem;
+}
+
+.news-icon--paper {
+    background: #E1F4FC;
+    color: #067EB0;
+}
+
+.news-icon--award {
+    background: #FBF3DC;
+    color: #C9A227;
+}
+
+.news-icon--grant {
+    background: #E4F5E9;
+    color: #2C8A46;
+}
+
+.news-icon--people {
+    background: #E9EDF6;
+    color: #3D5480;
+}
+
+.news-text {
+    flex: 1;
+    margin: 4px 0 0;
+    font-size: .95rem;
+    line-height: 1.6;
+    color: #6B6A75;
+}
+
+.news-text .hl {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+@media (max-width: 575.98px) {
+    .news-item {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+
+    .news-date {
+        flex-basis: 100%;
+        margin-top: 0;
+    }
+}
+
+
+/*** Research ***/
+.research-lead {
+    max-width: 760px;
+    font-size: .95rem;
+    color: #6B6A75;
+    margin-bottom: 44px;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+}
+
+.research-card {
+    background: #FFFFFF;
+    border: 1px solid #E3EEF5;
+    border-radius: 8px;
+    padding: 30px 28px 26px;
+    transition: .3s;
+}
+
+.research-card:hover {
+    border-color: rgba(6, 163, 218, .45);
+    box-shadow: 0 10px 30px rgba(9, 30, 62, .08);
+    transform: translateY(-3px);
+}
+
+.research-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+}
+
+.research-icon--cyan {
+    background: #E1F4FC;
+    color: #067EB0;
+}
+
+.research-icon--green {
+    background: #E4F5E9;
+    color: #2C8A46;
+}
+
+.research-icon--navy {
+    background: #E9EDF6;
+    color: #3D5480;
+}
+
+.research-icon--gold {
+    background: #FBF3DC;
+    color: #C9A227;
+}
+
+.research-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    /* overrides the template's h3 { font-weight: 700 !important } near the top of this file */
+    font-weight: 600 !important;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.research-desc {
+    font-size: .92rem;
+    line-height: 1.65;
+    color: #6B6A75;
+    margin-bottom: 16px;
+}
+
+.research-desc .hl {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.research-pubs {
+    list-style: none;
+    margin: 0;
+    padding: 14px 0 0;
+    border-top: 1px solid #E8F1F6;
+}
+
+.research-pubs li {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    font-size: .82rem;
+    padding: 5px 0;
+}
+
+.research-pubs .pub-venue,
+.research-pubs .pub-status {
+    flex-shrink: 0;
+    font-size: .62rem;
+    padding: 2px 8px;
+}
+
+.research-pubs a {
+    color: #6B6A75;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.research-pubs a:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 767.98px) {
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/*** Joining Us ***/
+.join-lead {
+    max-width: 720px;
+    font-size: .95rem;
+    color: #6B6A75;
+    margin-bottom: 44px;
+}
+
+.join-item {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #E8F1F6;
+}
+
+.join-item:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.join-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    /* overrides the template's h3 { font-weight: 700 !important } near the top of this file */
+    font-weight: 600 !important;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.join-check {
+    color: var(--primary);
+    font-size: .9rem;
+}
+
+.join-desc {
+    font-size: .92rem;
+    line-height: 1.65;
+    color: #6B6A75;
+    margin-bottom: 0;
+}
+
+.join-contact {
+    background: #FFFFFF;
+    border: 1px solid #E3EEF5;
+    border-radius: 8px;
+    padding: 28px 26px;
+}
+
+.join-contact-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    /* overrides the template's h3 { font-weight: 700 !important } near the top of this file */
+    font-weight: 600 !important;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.join-contact-note {
+    font-size: .88rem;
+    line-height: 1.6;
+    color: #6B6A75;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #E8F1F6;
+}
+
+.join-contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: .9rem;
+    color: #6B6A75;
+    margin-bottom: 16px;
+}
+
+.join-contact-row:last-child {
+    margin-bottom: 0;
+}
+
+.join-contact-row a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.join-contact-icon {
+    flex: 0 0 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #E1F4FC;
+    color: #067EB0;
+    font-size: .85rem;
+}
+
+.join-contact-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8C99A8;
 }
