@@ -150,6 +150,43 @@ h6,
     color: #FFFFFF;
 }
 
+/* Brand logo: white variant over the dark hero, color variant on white
+   backgrounds (sticky navbar and mobile) */
+.brand-logo {
+    height: 54px;
+    width: auto;
+}
+
+.brand-logo--color {
+    display: none;
+}
+
+.brand-logo--white {
+    display: block;
+}
+
+.sticky-top.navbar-dark .brand-logo--color {
+    display: block;
+}
+
+.sticky-top.navbar-dark .brand-logo--white {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .brand-logo {
+        height: 46px;
+    }
+
+    .brand-logo--color {
+        display: block;
+    }
+
+    .brand-logo--white {
+        display: none;
+    }
+}
+
 .navbar-dark .navbar-toggler {
     color: var(--primary) !important;
     border-color: var(--primary) !important;
