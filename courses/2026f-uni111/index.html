@@ -9,9 +9,9 @@
 <meta property="og:title" content="UNI111 Introduction to CSE, Fall 2026">
 <meta property="og:description" content="A first-year tour of computer science and engineering, from systems and HCI to AI and security, taught by UNIST CSE faculty. Wednesdays 4:00 to 5:15 pm, Room 104-E206, UNIST.">
 <meta property="og:url" content="https://websec-lab.github.io/courses/2026f-uni111/">
-<meta property="og:image" content="https://websec-lab.github.io/courses/2026f-uni111/assets/hero-bg.jpg">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1080">
+<meta property="og:image" content="https://websec-lab.github.io/courses/2026f-uni111/assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -86,6 +86,7 @@ section[id] { scroll-margin-top: 72px; }
 .topnav.scrolled nav a:hover { color: var(--blue); }
 .topnav nav a.nav-score { display: inline-flex; align-items: center; gap: 5px; }
 .topnav nav a.nav-score svg { width: 12px; height: 12px; flex: 0 0 auto; }
+.menu-btn { display: none; }
 
 /* hero */
 .hero {
@@ -555,8 +556,40 @@ footer .container {
 footer a { color: rgba(255,255,255,.85); }
 
 @media (max-width: 640px) {
-  .topnav nav { gap: 18px; }
-  .brand { font-size: 15px; }
+  .brand { font-size: 15px; white-space: nowrap; }
+  .topnav nav {
+    display: none;
+    position: absolute;
+    top: 58px;
+    right: 14px;
+    flex-direction: column;
+    gap: 2px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(0,14,45,.14);
+    padding: 8px 10px;
+    min-width: 160px;
+  }
+  .topnav nav.open { display: flex; }
+  .topnav nav a, .topnav.scrolled nav a { color: var(--gray); padding: 8px 10px; border-radius: 8px; }
+  .topnav nav a:hover { background: #f4f7fb; color: var(--blue); }
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 16px;
+    padding: 4.5px 13px;
+    cursor: pointer;
+  }
+  .menu-btn svg { width: 13px; height: 13px; }
+  .topnav.scrolled .menu-btn { color: var(--gray); background: #fff; border-color: #d7d9dd; }
   .hero { padding: 60px 20px 52px; }
   .info-grid { grid-template-columns: 1fr; gap: 16px; }
   .row { grid-template-columns: 54px 1fr; gap: 10px; }
@@ -570,7 +603,7 @@ footer a { color: rgba(255,255,255,.85); }
   .rank-grid { grid-template-columns: 1fr; gap: 16px; }
   details.col-main summary { gap: 12px; }
   .detail { grid-template-columns: 1fr; gap: 16px; padding-left: 0; }
-  .logistics .btns { margin-left: 0; }
+  .logistics .btns { margin-left: 0; flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -585,6 +618,10 @@ footer a { color: rgba(255,255,255,.85); }
       <a href="#schedule">Schedule</a>
       <a class="nav-score" href="score.html">Scoreboard<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 3.5H3.5A1.5 1.5 0 0 0 2 5v7.5A1.5 1.5 0 0 0 3.5 14H11a1.5 1.5 0 0 0 1.5-1.5V9.5M9.5 2H14v4.5M14 2 7.5 8.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </nav>
+    <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+      Menu
+    </button>
   </div>
 </header>
 
@@ -599,7 +636,7 @@ footer a { color: rgba(255,255,255,.85); }
 
 <section class="intro" id="about">
   <div class="container">
-    <p class="intro-about">Computer science and engineering powers the technologies that are improving the quality of our lives, from deep learning to the networks and cloud computing that connect everyone and everything. This course introduces first-year students to the major areas of computer science, including systems, HCI, AI, software engineering, security, and data science, through one- to two-week introductory lectures with hands-on exercises, alongside alumni career talks and a faculty Q&amp;A panel on students&rsquo; questions and the role of computer science in the AI era.</p>
+    <p class="intro-about">This course introduces first-year students to the major areas of computer science, including systems, HCI, AI, software engineering, security, and data science, through one- to two-week introductory lectures with hands-on exercises. The course also includes alumni career talks and a faculty Q&amp;A panel on students&rsquo; questions and the role of computer science in the AI era.</p>
     <div class="info-grid">
       <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.6V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Time</b><span>Wednesdays, 4:00&ndash;5:15 pm</span></div>
       <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.8-4.1-4.8-7.6a4.8 4.8 0 1 1 9.6 0c0 3.5-4.8 7.6-4.8 7.6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="6.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>Location</b><span>Room E206, Building 104</span></div>
@@ -1276,6 +1313,19 @@ footer a { color: rgba(255,255,255,.85); }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  var menuBtn = document.getElementById("menu-btn");
+  var menuNav = document.querySelector(".topnav nav");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menuNav.classList.toggle("open");
+    });
+    document.addEventListener("click", function () {
+      menuNav.classList.remove("open");
+    });
+  }
+
 
   function expand(d) {
     var c = d.querySelector(".detail");
