@@ -132,7 +132,9 @@ section[id] { scroll-margin-top: 72px; }
   border-bottom: 1px solid var(--rule);
 }
 .info-grid b {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .1em;
@@ -140,6 +142,7 @@ section[id] { scroll-margin-top: 72px; }
   color: var(--blue);
   margin-bottom: 5px;
 }
+.info-grid b svg, .attendance b svg { width: 15px; height: 15px; flex: 0 0 auto; }
 .info-grid span { font-size: 15.5px; color: #222; }
 .info-grid a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .attendance {
@@ -150,7 +153,9 @@ section[id] { scroll-margin-top: 72px; }
   padding: 18px 22px;
 }
 .attendance b {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .1em;
@@ -442,13 +447,13 @@ footer a { color: rgba(255,255,255,.85); }
   <div class="container">
     <p class="intro-about">The purpose of this seminar is to expose graduate students to state-of-the-art research and development through weekly invited talks by leading experts in computer science and engineering.</p>
     <div class="info-grid">
-      <div><b>Time</b><span>Wednesdays, 4:00&ndash;5:15 pm</span></div>
-      <div><b>Location</b><span>Room E204, Building 104<br>Online sessions over Zoom</span></div>
-      <div><b>Coordinator</b><span>Prof. <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a><br>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.6V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Time</b><span>Wednesdays, 4:00&ndash;5:15 pm</span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.8-4.1-4.8-7.6a4.8 4.8 0 1 1 9.6 0c0 3.5-4.8 7.6-4.8 7.6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="6.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>Location</b><span>Room E204, Building 104<br>Online sessions over Zoom</span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.2" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.8 13.8a5.2 5.2 0 0 1 10.4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Coordinator</b><span>Prof. <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a><br>
         <a href="mailto:seongil.wi@unist.ac.kr">seongil.wi@unist.ac.kr</a></span></div>
     </div>
     <div class="attendance">
-      <b>Attendance</b>
+      <b><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2.5" width="10" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.8 1.5h4.4v2.2H5.8z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m5.7 9.3 1.7 1.7 3-3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Attendance</b>
       <p>Attendance is taken at every session through the UNIST Mobile Attendance System. In
       accordance with UNIST academic regulations, <strong>four or more absences result in an F</strong>.
       Attendance may also be manually re-checked at random during a session;
