@@ -357,6 +357,12 @@ details[open] .chev { transform: rotate(180deg); color: var(--blue); }
   padding-top: 14px;
   margin-top: 6px;
 }
+.logistics .btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
 .btn-cal {
   display: inline-flex;
   align-items: center;
@@ -367,11 +373,13 @@ details[open] .chev { transform: rotate(180deg); color: var(--blue); }
   border: 1px solid #c3d4ec;
   border-radius: 18px;
   padding: 6px 15px;
-  margin-left: auto;
+  white-space: nowrap;
   transition: all .15s;
 }
 .btn-cal:hover { background: #eef4fc; text-decoration: none; }
 .btn-cal svg { width: 14px; height: 14px; }
+.btn-zoom { font: inherit; font-size: 13.5px; font-weight: 600; background: #fff; cursor: pointer; }
+.row-next .btn-zoom { background: transparent; }
 
 .row-off .off-label {
   font-size: 15px;
@@ -406,7 +414,7 @@ footer a { color: rgba(255,255,255,.85); }
   .thumb { width: 52px; height: 52px; }
   details.col-main summary { gap: 12px; }
   .detail { grid-template-columns: 1fr; gap: 16px; padding-left: 0; }
-  .btn-cal { margin-left: 0; }
+  .logistics .btns { margin-left: 0; }
 }
 </style>
 </head>
@@ -484,9 +492,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Jooyong Yi</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Formal%20Proof%3A%20A%20Key%20Technology%20for%20Controlling%20Superintelligent%20AI&dates=20260902T160000/20260902T171500&ctz=Asia/Seoul&details=Chung-Kil%20Hur%2C%20Seoul%20National%20University.%20Hosted%20by%20Jooyong%20Yi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Formal%20Proof%3A%20A%20Key%20Technology%20for%20Controlling%20Superintelligent%20AI&dates=20260902T160000/20260902T171500&ctz=Asia/Seoul&details=Chung-Kil%20Hur%2C%20Seoul%20National%20University.%20Hosted%20by%20Jooyong%20Yi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -518,9 +526,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Seongil Wi</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20When%20New%20Browser%20Features%20Become%20New%20Attack%20Surfaces&dates=20260909T160000/20260909T171500&ctz=Asia/Seoul&details=Suyoung%20Lee%2C%20KAIST.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20When%20New%20Browser%20Features%20Become%20New%20Attack%20Surfaces&dates=20260909T160000/20260909T171500&ctz=Asia/Seoul&details=Suyoung%20Lee%2C%20KAIST.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -552,9 +560,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Junghoon Kim</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20%ED%95%99%EC%88%A0%EB%85%BC%EB%AC%B8%20%EC%9E%91%EC%84%B1%EB%B2%95%20%26%20%EB%8C%80%ED%95%99%EC%9B%90%20%EC%83%9D%ED%99%9C%20%EA%B4%80%EB%A0%A8%20%EC%A1%B0%EC%96%B8&dates=20260916T160000/20260916T171500&ctz=Asia/Seoul&details=Junghoon%20Kim%2C%20UNIST.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20%ED%95%99%EC%88%A0%EB%85%BC%EB%AC%B8%20%EC%9E%91%EC%84%B1%EB%B2%95%20%26%20%EB%8C%80%ED%95%99%EC%9B%90%20%EC%83%9D%ED%99%9C%20%EA%B4%80%EB%A0%A8%20%EC%A1%B0%EC%96%B8&dates=20260916T160000/20260916T171500&ctz=Asia/Seoul&details=Junghoon%20Kim%2C%20UNIST.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -586,9 +594,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Ranggi Hwang</span>
                 <span>Zoom, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Computing%20System%20for%20Brain%20Computer%20Interface&dates=20260923T160000/20260923T171500&ctz=Asia/Seoul&details=Hunjun%20Lee%2C%20Hanyang%20University.%20Hosted%20by%20Ranggi%20Hwang.&location=Zoom" target="_blank" rel="noopener">
+                <span class="btns"><button type="button" class="btn-cal btn-zoom"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="4" width="9" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 7.2 14.5 5v6l-4-2.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Join on Zoom</button><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Computing%20System%20for%20Brain%20Computer%20Interface&dates=20260923T160000/20260923T171500&ctz=Asia/Seoul&details=Hunjun%20Lee%2C%20Hanyang%20University.%20Hosted%20by%20Ranggi%20Hwang.&location=Zoom" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -620,9 +628,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Taesik Gong</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Scalable%2C%20Efficient%2C%20and%20Reliable%20AI%20Agents%3A%20A%20Systems%20Perspective&dates=20260930T160000/20260930T171500&ctz=Asia/Seoul&details=Sehoon%20Kim%2C%20KAIST.%20Hosted%20by%20Taesik%20Gong.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Scalable%2C%20Efficient%2C%20and%20Reliable%20AI%20Agents%3A%20A%20Systems%20Perspective&dates=20260930T160000/20260930T171500&ctz=Asia/Seoul&details=Sehoon%20Kim%2C%20KAIST.%20Hosted%20by%20Taesik%20Gong.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -655,9 +663,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Hyungon Moon</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Singularity%20Has%20Begun%3A%20How%20AI%20Reshapes%20Cybersecurity&dates=20261007T160000/20261007T171500&ctz=Asia/Seoul&details=Insu%20Yun%2C%20KAIST.%20Hosted%20by%20Hyungon%20Moon.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Singularity%20Has%20Begun%3A%20How%20AI%20Reshapes%20Cybersecurity&dates=20261007T160000/20261007T171500&ctz=Asia/Seoul&details=Insu%20Yun%2C%20KAIST.%20Hosted%20by%20Hyungon%20Moon.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -689,9 +697,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Youngbin Im</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Designing%20Ultimate%20Interface%20for%20Human-AI%20Collaboration&dates=20261014T160000/20261014T171500&ctz=Asia/Seoul&details=Seongkook%20Heo%2C%20UNIST.%20Hosted%20by%20Youngbin%20Im.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Designing%20Ultimate%20Interface%20for%20Human-AI%20Collaboration&dates=20261014T160000/20261014T171500&ctz=Asia/Seoul&details=Seongkook%20Heo%2C%20UNIST.%20Hosted%20by%20Youngbin%20Im.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -700,7 +708,7 @@ footer a { color: rgba(255,255,255,.85); }
 
       <div class="row row-off" data-date="2026-10-21">
         <div class="col-date">Oct 21</div>
-        <p class="off-label">No seminar. Midterm exams.</p>
+        <p class="off-label">No seminar (Midterm exam period)</p>
       </div>
 
       <div class="row" data-date="2026-10-28" id="talk-9">
@@ -728,9 +736,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Hyungon Moon</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Privacy-Preserving%20Techniques%20for%20AI%20Systems&dates=20261028T160000/20261028T171500&ctz=Asia/Seoul&details=Kevin%20Nam%2C%20Kyung%20Hee%20University.%20Hosted%20by%20Hyungon%20Moon.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Privacy-Preserving%20Techniques%20for%20AI%20Systems&dates=20261028T160000/20261028T171500&ctz=Asia/Seoul&details=Kevin%20Nam%2C%20Kyung%20Hee%20University.%20Hosted%20by%20Hyungon%20Moon.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -763,9 +771,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Seongil Wi</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Toward%20Sound%20Binary%20Rewriting%3A%20From%20Patching%20to%20Reassembly&dates=20261104T160000/20261104T171500&ctz=Asia/Seoul&details=Hyungseok%20Kim%2C%20Chungnam%20National%20University.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Toward%20Sound%20Binary%20Rewriting%3A%20From%20Patching%20to%20Reassembly&dates=20261104T160000/20261104T171500&ctz=Asia/Seoul&details=Hyungseok%20Kim%2C%20Chungnam%20National%20University.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -797,9 +805,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Jaeyeon Lee</span>
                 <span>Zoom, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Gabriel%20Lima&dates=20261111T160000/20261111T171500&ctz=Asia/Seoul&details=Gabriel%20Lima%2C%20Max%20Planck%20Institute%20for%20Security%20and%20Privacy.%20Hosted%20by%20Jaeyeon%20Lee.&location=Zoom" target="_blank" rel="noopener">
+                <span class="btns"><button type="button" class="btn-cal btn-zoom"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="4" width="9" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 7.2 14.5 5v6l-4-2.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Join on Zoom</button><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Gabriel%20Lima&dates=20261111T160000/20261111T171500&ctz=Asia/Seoul&details=Gabriel%20Lima%2C%20Max%20Planck%20Institute%20for%20Security%20and%20Privacy.%20Hosted%20by%20Jaeyeon%20Lee.&location=Zoom" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -831,9 +839,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Seongil Wi</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20AI%20Meets%20Security%3A%20From%20Cybercrime%20to%20Bug%20Hunting&dates=20261118T160000/20261118T171500&ctz=Asia/Seoul&details=Sungjae%20Hwang%2C%20Sungkyunkwan%20University.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20AI%20Meets%20Security%3A%20From%20Cybercrime%20to%20Bug%20Hunting&dates=20261118T160000/20261118T171500&ctz=Asia/Seoul&details=Sungjae%20Hwang%2C%20Sungkyunkwan%20University.%20Hosted%20by%20Seongil%20Wi.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -865,9 +873,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Junghoon Kim</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Graph%20Learning%3A%20Representation%2C%20Recommendation%2C%20Reasoning%2C%20and%20Reliability&dates=20261125T160000/20261125T171500&ctz=Asia/Seoul&details=Sungsu%20Lim%2C%20Chungnam%20National%20University.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Graph%20Learning%3A%20Representation%2C%20Recommendation%2C%20Reasoning%2C%20and%20Reliability&dates=20261125T160000/20261125T171500&ctz=Asia/Seoul&details=Sungsu%20Lim%2C%20Chungnam%20National%20University.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -900,9 +908,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Junghoon Kim</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Following%20the%20Bias%3A%20From%20Web%20Data%20to%20Search%2C%20LLMs%2C%20and%20RAG&dates=20261202T160000/20261202T171500&ctz=Asia/Seoul&details=Jaebeom%20You%2C%20Seoul%20National%20University%20of%20Science%20and%20Technology.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20Following%20the%20Bias%3A%20From%20Web%20Data%20to%20Search%2C%20LLMs%2C%20and%20RAG&dates=20261202T160000/20261202T171500&ctz=Asia/Seoul&details=Jaebeom%20You%2C%20Seoul%20National%20University%20of%20Science%20and%20Technology.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -934,9 +942,9 @@ footer a { color: rgba(255,255,255,.85); }
               <div class="logistics">
                 <span>Hosted by Junghoon Kim</span>
                 <span>Room 104-E204, 4:00&ndash;5:15 pm</span>
-                <a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%99%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%EA%B0%80&dates=20261209T160000/20261209T171500&ctz=Asia/Seoul&details=%EC%9E%84%EC%9D%80%EC%98%81%20%EC%9E%91%EA%B0%80%2C%20%EB%8F%85%EB%A6%BD%EC%84%9C%EC%A0%90%20%ED%8C%8C%EB%B0%80%2C%20%EC%9A%B8%EC%82%B0.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=CSE590%20Seminar%3A%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%99%9C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%EA%B0%80&dates=20261209T160000/20261209T171500&ctz=Asia/Seoul&details=%EC%9E%84%EC%9D%80%EC%98%81%20%EC%9E%91%EA%B0%80%2C%20%EB%8F%85%EB%A6%BD%EC%84%9C%EC%A0%90%20%ED%8C%8C%EB%B0%80%2C%20%EC%9A%B8%EC%82%B0.%20Hosted%20by%20Junghoon%20Kim.&location=Room%20E204%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
                   <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
-                  Add to Google Calendar</a>
+                  Add to Google Calendar</a></span>
               </div>
             </div>
           </div>
@@ -945,7 +953,7 @@ footer a { color: rgba(255,255,255,.85); }
 
       <div class="row row-off" data-date="2026-12-16">
         <div class="col-date">Dec 16</div>
-        <p class="off-label">No seminar. Final exams.</p>
+        <p class="off-label">No seminar (Final exam period)</p>
       </div>
   </div>
 </section>
@@ -977,6 +985,56 @@ footer a { color: rgba(255,255,255,.85); }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  function expand(d) {
+    var c = d.querySelector(".detail");
+    d.open = true;
+    var h = c.scrollHeight;
+    c.style.overflow = "hidden";
+    c.style.height = "0px";
+    c.style.opacity = "0";
+    requestAnimationFrame(function () {
+      c.style.transition = "height .3s ease, opacity .3s ease";
+      c.style.height = h + "px";
+      c.style.opacity = "1";
+    });
+    c.addEventListener("transitionend", function te(ev) {
+      if (ev.propertyName !== "height") return;
+      c.style.height = c.style.overflow = c.style.transition = c.style.opacity = "";
+      c.removeEventListener("transitionend", te);
+    });
+  }
+
+  function collapse(d) {
+    var c = d.querySelector(".detail");
+    c.style.overflow = "hidden";
+    c.style.height = c.scrollHeight + "px";
+    requestAnimationFrame(function () {
+      c.style.transition = "height .25s ease, opacity .25s ease";
+      c.style.height = "0px";
+      c.style.opacity = "0";
+    });
+    c.addEventListener("transitionend", function te(ev) {
+      if (ev.propertyName !== "height") return;
+      d.open = false;
+      c.style.height = c.style.overflow = c.style.transition = c.style.opacity = "";
+      c.removeEventListener("transitionend", te);
+    });
+  }
+
+  document.querySelectorAll("details.col-main").forEach(function (d) {
+    d.querySelector("summary").addEventListener("click", function (e) {
+      e.preventDefault();
+      if (d.open) {
+        collapse(d);
+      } else {
+        document.querySelectorAll("details.col-main[open]").forEach(function (o) {
+          if (o !== d) collapse(o);
+        });
+        expand(d);
+      }
+    });
+  });
 
   var btn = document.getElementById("toggle-all");
   var open = false;
