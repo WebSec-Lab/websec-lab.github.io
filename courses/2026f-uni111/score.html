@@ -277,10 +277,21 @@ footer a { color: rgba(255,255,255,.85); }
     var rows = parseCSV(t);
     if (!rows.length) return fail("No data available yet.");
     var head = rows[0].map(function (h) { return h.trim().toLowerCase(); });
-    var idI = head.indexOf("student id"), scI = head.indexOf("participation score");
-    if (idI < 0 || scI < 0) return fail("No data available yet.");
+    var data = rows.slice(1);
+    var idI = head.indexOf("student id");
+    if (idI < 0) {
+      for (var c = 0; c < head.length; c++) {
+        var hits = 0, tot = 0;
+        data.forEach(function (r) { var v = (r[c] || "").trim(); if (v) { tot++; if (/^20\d{6}$/.test(v)) hits++; } });
+        if (tot > 0 && hits / tot > 0.8) { idI = c; break; }
+      }
+    }
+    var scI = -1;
+    head.forEach(function (h, i) { if (scI < 0 && (h.indexOf("total") >= 0 || h.indexOf("participation score") >= 0)) scI = i; });
+    if (scI < 0) scI = head.length - 1;
+    if (idI < 0) return fail("No data available yet.");
     var list = [];
-    rows.slice(1).forEach(function (r) {
+    data.forEach(function (r) {
       var id = (r[idI] || "").trim();
       var sc = parseFloat(r[scI]);
       if (id) list.push({ id: id, score: isNaN(sc) ? 0 : sc });
