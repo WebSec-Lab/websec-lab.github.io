@@ -108,6 +108,90 @@ a:hover { text-decoration: underline; }
   margin: 0 auto;
 }
 
+/* trend chart */
+.trend-sec { padding: 40px 0 0; }
+.trend-sec h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.chart-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(106px, 1fr));
+  gap: 2px 4px;
+  margin: 10px 0 2px;
+  font-size: 11px;
+  color: var(--gray);
+}
+.chart-legend .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: 0;
+}
+.chart-legend .leg {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.5px 7px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all .12s;
+  user-select: none;
+}
+.chart-legend .leg:hover { background: #f1f2f5; }
+.chart-legend .leg.pinned { background: #eef4fc; border-color: #c3d4ec; color: var(--blue); font-weight: 600; }
+.chart-legend .leg.static { cursor: default; }
+.chart-legend .leg.static:hover { background: transparent; }
+.chart-outer { position: relative; }
+.chart-wrap { overflow-x: auto; }
+.chart-wrap svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.trend-line, .trend-dot { transition: opacity .15s ease; }
+.chart-tip {
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,14,45,.10);
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: #222;
+  white-space: nowrap;
+  z-index: 5;
+}
+.chart-tip b {
+  display: block;
+  font-size: 11.5px;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+.chart-tip .row { display: flex; align-items: center; gap: 7px; }
+.chart-tip .row .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.chart-tip .val {
+  margin-left: auto;
+  padding-left: 14px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.chart-empty {
+  border: 1px dashed #d7d9dd;
+  border-radius: 10px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--light);
+  font-style: italic;
+  font-size: 14.5px;
+}
+
 /* score table */
 .score-sec { padding: 40px 0 20px; }
 .score-meta {
@@ -147,6 +231,13 @@ a:hover { text-decoration: underline; }
 .score-table tr.top3 td { background: #f4f7fb; font-weight: 700; }
 .score-table tr.top3 td.rank-cell { color: var(--blue); }
 .score-table .empty { color: var(--light); font-style: italic; }
+.id-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
 .score-note {
   margin-top: 18px;
   font-size: 13.5px;
@@ -199,6 +290,19 @@ footer a { color: rgba(255,255,255,.85); }
     of the semester each receive a 10,000 KRW 배달의민족 (Baemin) gift card.</p>
 </div>
 
+<section class="trend-sec">
+  <div class="container">
+    <div class="chart-legend" id="chart-legend" hidden></div>
+    <div class="chart-outer">
+      <div class="chart-wrap" id="chart-wrap" hidden>
+        <svg id="trend-svg" viewBox="0 0 900 340" role="img" aria-label="Cumulative participation score by session"></svg>
+      </div>
+      <div class="chart-tip" id="chart-tip" hidden></div>
+    </div>
+    <div class="chart-empty" id="chart-empty" hidden>No points on the board yet. The trend graph will appear once the first scores are in.</div>
+  </div>
+</section>
+
 <section class="score-sec">
   <div class="container">
     <div class="score-meta">
@@ -236,7 +340,7 @@ footer a { color: rgba(255,255,255,.85); }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  var SHEET_CSV = "https://docs.google.com/spreadsheets/d/1MjO-9Xya_m8ikA0bQ3XsBD4a_IacXnNoa_zBMBm1c28/gviz/tq?tqx=out:csv";
+  var SHEET_CSV = "https://docs.google.com/spreadsheets/d/1MjO-9Xya_m8ikA0bQ3XsBD4a_IacXnNoa_zBMBm1c28/export?format=csv&gid=0";
   function parseCSV(t) {
     var rows = [], row = [], cur = "", q = false;
     for (var i = 0; i < t.length; i++) {
@@ -257,20 +361,211 @@ footer a { color: rgba(255,255,255,.85); }
 
   var body = document.getElementById("score-body");
   var updated = document.getElementById("updated");
+  var COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"];
 
-  function fail(msg) {
-    body.innerHTML = "";
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
-    td.colSpan = 3;
-    td.className = "empty";
-    td.textContent = msg;
-    tr.appendChild(td);
-    body.appendChild(tr);
-    updated.textContent = "";
+  function renderChart(list, labels) {
+    // every line starts from 0 at a short lead-in before the first session
+    list = list.map(function (e) {
+      return { id: e.id, score: e.score, color: e.color, cum: [0].concat(e.cum) };
+    });
+    var legend = document.getElementById("chart-legend");
+    var wrap = document.getElementById("chart-wrap");
+    var svg = document.getElementById("trend-svg");
+    var tipEl = document.getElementById("chart-tip");
+    var emptyEl = document.getElementById("chart-empty");
+    legend.hidden = true;
+    if (!labels.length || !list.length) { emptyEl.hidden = false; return; }
+    var maxV = 0;
+    list.forEach(function (e) {
+      e.final = e.cum.length ? e.cum[e.cum.length - 1] : 0;
+      if (e.final > maxV) maxV = e.final;
+    });
+    if (maxV <= 0) { emptyEl.hidden = false; return; }
+    var scoring = list.filter(function (e) { return e.final > 0; });
+
+    // students sharing an identical trajectory collapse into one representative line
+    var groupMap = {};
+    scoring.forEach(function (e) {
+      var key = e.cum.join(",");
+      if (!groupMap[key]) groupMap[key] = [];
+      groupMap[key].push(e);
+    });
+    var groups = Object.keys(groupMap).map(function (k) {
+      var g = groupMap[k];
+      g.sort(function (a, b) { return a.id.localeCompare(b.id); });
+      return { members: g, cum: g[0].cum, final: g[0].final, color: g[0].color };
+    });
+    groups.sort(function (a, b) { return a.final - b.final || a.members[0].id.localeCompare(b.members[0].id); });
+    groups.forEach(function (g2, k2) { g2.members.forEach(function (m) { m.groupK = k2; }); });
+
+    var W = 900, H = 340, L = 46, R = 24, T = 16, B = 36;
+    var pw = W - L - R, ph = H - T - B;
+    var n = labels.length;
+    var step = Math.max(1, Math.ceil(maxV / 4));
+    var yMax = step * 4;
+    var slot = pw / (n - 0.5);
+    var lead = slot * 0.5;
+    function X(j) { return j === 0 ? L : L + lead + slot * (j - 1); }
+    function Y(v) { return T + ph * (1 - v / yMax); }
+
+    var s = "";
+    for (var g = 1; g <= 4; g++) {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(g * step) + '" y2="' + Y(g * step) + '" stroke="#e1e0d9" stroke-width="1"/>';
+      s += '<text x="' + (L - 8) + '" y="' + (Y(g * step) + 4) + '" text-anchor="end" font-size="11" fill="#898781">' + (g * step) + '</text>';
+    }
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#c3c2b7" stroke-width="1"/>';
+    s += '<text x="' + (L - 8) + '" y="' + (Y(0) + 4) + '" text-anchor="end" font-size="11" fill="#898781">0</text>';
+    for (var i = 0; i < n; i++) {
+      s += '<text x="' + X(i + 1).toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="11" fill="#898781">' + labels[i] + '</text>';
+    }
+    function pts(cum) {
+      var p = [];
+      for (var i2 = 0; i2 <= n; i2++) p.push(X(i2).toFixed(1) + "," + Y(cum[i2] || 0).toFixed(1));
+      return p.join(" ");
+    }
+    groups.forEach(function (gr, k) {
+      s += '<polyline class="trend-line" data-g="' + k + '" points="' + pts(gr.cum) + '" fill="none" stroke="' + gr.color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    });
+    groups.forEach(function (gr, k) {
+      s += '<circle class="trend-dot" data-g="' + k + '" cx="' + X(n).toFixed(1) + '" cy="' + Y(gr.final).toFixed(1) + '" r="3.5" fill="' + gr.color + '" stroke="#fff" stroke-width="2"/>';
+    });
+    svg.innerHTML = s;
+    wrap.hidden = false;
+    emptyEl.hidden = true;
+
+    function lineOf(k) { return svg.querySelector('.trend-line[data-g="' + k + '"]'); }
+    function dotOf(k) { return svg.querySelector('.trend-dot[data-g="' + k + '"]'); }
+    var pinned = {};
+    function setLine(k2, visible, strong, color) {
+      var c = color || groups[k2].color;
+      var ln2 = lineOf(k2);
+      ln2.setAttribute("stroke", c);
+      ln2.setAttribute("stroke-width", visible && strong ? "3.5" : "2");
+      ln2.style.opacity = visible ? "1" : "0.12";
+      var dt2 = dotOf(k2);
+      if (dt2) { dt2.setAttribute("fill", c); dt2.style.opacity = visible ? "1" : "0.12"; }
+    }
+    function applyState() {
+      var colorByGroup = {}, any = false;
+      for (var sid in pinned) { any = true; colorByGroup[pinned[sid].k] = pinned[sid].color; }
+      groups.forEach(function (g2, k2) {
+        if (any) setLine(k2, colorByGroup[k2] !== undefined, true, colorByGroup[k2]);
+        else setLine(k2, true, false);
+      });
+      svg.style.cursor = "";
+      tipEl.hidden = true;
+    }
+    svg.addEventListener("mouseleave", applyState);
+
+    legend.innerHTML = "";
+    var scoringSorted = scoring.slice().sort(function (a, b) { return b.final - a.final || a.id.localeCompare(b.id); });
+    scoringSorted.forEach(function (m) {
+      var k2 = m.groupK;
+      var sp = document.createElement("span");
+      sp.className = "leg";
+      var d = document.createElement("span");
+      d.className = "dot";
+      d.style.background = m.color;
+      sp.appendChild(d);
+      sp.appendChild(document.createTextNode(m.id));
+      sp.addEventListener("mouseenter", function () {
+        groups.forEach(function (_, k3) { setLine(k3, k3 === k2, true, k3 === k2 ? m.color : null); });
+      });
+      sp.addEventListener("mouseleave", applyState);
+      sp.addEventListener("click", function () {
+        if (pinned[m.id]) delete pinned[m.id]; else pinned[m.id] = { k: k2, color: m.color };
+        sp.classList.toggle("pinned", !!pinned[m.id]);
+        applyState();
+        groups.forEach(function (_, k3) { setLine(k3, k3 === k2, true, k3 === k2 ? m.color : null); });
+      });
+      legend.appendChild(sp);
+    });
+    var zeros = list.length - scoring.length;
+    if (zeros > 0) {
+      var sp0 = document.createElement("span");
+      sp0.className = "leg static";
+      var d0 = document.createElement("span");
+      d0.className = "dot";
+      d0.style.background = "#d3d2cc";
+      sp0.appendChild(d0);
+      sp0.appendChild(document.createTextNode("Others (" + zeros + ")"));
+      legend.appendChild(sp0);
+    }
+    legend.hidden = false;
+
+    function clearPins() {
+      var had = false;
+      for (var pk in pinned) { had = true; delete pinned[pk]; }
+      if (!had) return;
+      legend.querySelectorAll(".leg.pinned").forEach(function (c) { c.classList.remove("pinned"); });
+      applyState();
+    }
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") clearPins();
+    });
+    document.addEventListener("click", function (ev) {
+      if (ev.target.closest && ev.target.closest(".chart-legend .leg")) return;
+      clearPins();
+    });
+    svg.addEventListener("mousemove", function (ev) {
+      var srect = svg.getBoundingClientRect();
+      var vx = (ev.clientX - srect.left) * (W / srect.width);
+      var vy = (ev.clientY - srect.top) * (H / srect.height);
+      if (vx < L - 4 || vx > W - R + 10 || vy < T - 8 || vy > H - B + 8) { applyState(); return; }
+      var t = (vx - L - lead) / slot + 1;
+      if (t < 0) t = 0;
+      if (t > n) t = n;
+      var i0 = Math.floor(t), i1 = Math.ceil(t);
+      function segDist(px, py, x1, y1, x2, y2) {
+        var dx = x2 - x1, dy = y2 - y1;
+        var l2 = dx * dx + dy * dy;
+        var u = l2 ? ((px - x1) * dx + (py - y1) * dy) / l2 : 0;
+        u = Math.max(0, Math.min(1, u));
+        return Math.hypot(px - (x1 + u * dx), py - (y1 + u * dy));
+      }
+      var s0 = Math.max(0, i0 - 1), s1 = Math.min(n - 1, i0);
+      var best = -1, bestD = 9;
+      groups.forEach(function (g2, k2) {
+        var d2 = Infinity;
+        for (var sg = s0; sg <= s1; sg++) {
+          d2 = Math.min(d2, segDist(vx, vy, X(sg), Y(g2.cum[sg] || 0), X(sg + 1), Y(g2.cum[sg + 1] || 0)));
+        }
+        if (d2 < bestD) { bestD = d2; best = k2; }
+      });
+      if (best < 0) { applyState(); return; }
+      svg.style.cursor = "pointer";
+      var gb = groups[best];
+      var a0 = gb.cum[i0] || 0, a1 = gb.cum[i1] || 0;
+      var members = [];
+      groups.forEach(function (g2, k2) {
+        var on = (g2.cum[i0] || 0) === a0 && (g2.cum[i1] || 0) === a1;
+        setLine(k2, on, true);
+        if (on) members = members.concat(g2.members);
+      });
+      members.sort(function (a, b) { return a.id.localeCompare(b.id); });
+      var shown = members.slice(0, 10);
+      var rowsH = shown.map(function (m) {
+        return '<span class="row"><span class="dot" style="background:' + m.color + '"></span>' + m.id + "</span>";
+      }).join("");
+      if (members.length > 10) rowsH += '<span class="row" style="color:var(--light)">and ' + (members.length - 10) + " more</span>";
+      tipEl.innerHTML = "<b>" + a1 + (a1 === 1 ? " point" : " points") + "</b>" + rowsH;
+      tipEl.hidden = false;
+      var wr = wrap.parentNode.getBoundingClientRect();
+      var px = ev.clientX - wr.left;
+      var tw = tipEl.offsetWidth;
+      var th = tipEl.offsetHeight;
+      var lx = px + 14;
+      if (lx + tw > wr.width - 6) lx = px - tw - 14;
+      var ty = (ev.clientY - wr.top) - 24;
+      if (ty + th > wr.height - 2) ty = (ev.clientY - wr.top) - th - 14;
+      if (ty < 2) ty = 2;
+      tipEl.style.left = lx + "px";
+      tipEl.style.top = ty + "px";
+    });
   }
 
-  fetch(SHEET_CSV, { cache: "no-store" }).then(function (r) {
+  window._renderChart = renderChart;
+  fetch(SHEET_CSV + "&cb=" + Date.now(), { cache: "no-store" }).then(function (r) {
     if (!r.ok) throw new Error("HTTP " + r.status);
     return r.text();
   }).then(function (t) {
@@ -290,12 +585,30 @@ footer a { color: rgba(255,255,255,.85); }
     head.forEach(function (h, i) { if (scI < 0 && (h.indexOf("total") >= 0 || h.indexOf("participation score") >= 0)) scI = i; });
     if (scI < 0) scI = head.length - 1;
     if (idI < 0) return fail("No data available yet.");
+    var dateI = [], dateLabels = [];
+    head.forEach(function (h, i) {
+      if (/^\d{1,2}\/\d{1,2}$/.test(h)) { dateI.push(i); dateLabels.push(h); }
+    });
     var list = [];
     data.forEach(function (r) {
       var id = (r[idI] || "").trim();
       var sc = parseFloat(r[scI]);
-      if (id) list.push({ id: id, score: isNaN(sc) ? 0 : sc });
+      var cum = [], run = 0;
+      dateI.forEach(function (ci) {
+        var v = parseFloat(r[ci]);
+        if (!isNaN(v)) run += v;
+        cum.push(run);
+      });
+      if (id) list.push({ id: id, score: isNaN(sc) ? 0 : sc, cum: cum });
     });
+    var idsSorted = list.map(function (e) { return e.id; }).sort();
+    var colorMap = {};
+    idsSorted.forEach(function (cid, ci) {
+      var hue = (ci * 137.508) % 360;
+      var lig = [40, 50, 45][ci % 3];
+      colorMap[cid] = "hsl(" + hue.toFixed(1) + ", 62%, " + lig + "%)";
+    });
+    list.forEach(function (e) { e.color = colorMap[e.id]; });
     if (!list.length) return fail("No students on the board yet.");
     list.sort(function (a, b) { return b.score - a.score || a.id.localeCompare(b.id); });
 
@@ -314,7 +627,11 @@ footer a { color: rgba(255,255,255,.85); }
       td1.className = "rank-cell num";
       td1.textContent = rankLabel;
       var td2 = document.createElement("td");
-      td2.textContent = e.id;
+      var dd = document.createElement("span");
+      dd.className = "id-dot";
+      dd.style.background = e.color || "#d3d2cc";
+      td2.appendChild(dd);
+      td2.appendChild(document.createTextNode(e.id));
       var td3 = document.createElement("td");
       td3.className = "num";
       td3.textContent = String(e.score);
@@ -325,6 +642,7 @@ footer a { color: rgba(255,255,255,.85); }
     updated.textContent = "Last synced " + now.toLocaleString("en-US", {
       month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Seoul"
     }) + " KST";
+    renderChart(list, dateLabels);
   }).catch(function () {
     fail("Could not load the scoreboard. Please try again later.");
   });

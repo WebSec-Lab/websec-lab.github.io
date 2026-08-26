@@ -1342,7 +1342,7 @@ footer a { color: rgba(255,255,255,.85); }
     btn.textContent = open ? "Collapse all" : "Expand all";
   });
 
-  var SHEET_CSV = "https://docs.google.com/spreadsheets/d/1MjO-9Xya_m8ikA0bQ3XsBD4a_IacXnNoa_zBMBm1c28/gviz/tq?tqx=out:csv";
+  var SHEET_CSV = "https://docs.google.com/spreadsheets/d/1MjO-9Xya_m8ikA0bQ3XsBD4a_IacXnNoa_zBMBm1c28/export?format=csv&gid=0";
   function parseCSV(t) {
     var rows = [], row = [], cur = "", q = false;
     for (var i = 0; i < t.length; i++) {
@@ -1360,7 +1360,7 @@ footer a { color: rgba(255,255,255,.85); }
     if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
     return rows;
   }
-  fetch(SHEET_CSV, { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (t) {
+  fetch(SHEET_CSV + "&cb=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (t) {
     var rows = parseCSV(t);
     if (!rows.length) return;
     var head = rows[0].map(function (h) { return h.trim().toLowerCase(); });
