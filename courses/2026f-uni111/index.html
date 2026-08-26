@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNI111 Introduction to CSE | Fall 2026 | UNIST</title>
+<meta name="description" content="A first-year tour of computer science and engineering, from systems and HCI to AI and security, taught by UNIST CSE faculty. Wednesdays 4:00 to 5:15 pm, Room 104-E206, UNIST.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UNI111 Introduction to CSE, Fall 2026">
+<meta property="og:description" content="A first-year tour of computer science and engineering, from systems and HCI to AI and security, taught by UNIST CSE faculty. Wednesdays 4:00 to 5:15 pm, Room 104-E206, UNIST.">
+<meta property="og:url" content="https://websec-lab.github.io/courses/2026f-uni111/">
+<meta property="og:image" content="https://websec-lab.github.io/courses/2026f-uni111/assets/hero-bg.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  --navy: #000e2d;
+  --navy2: #001a54;
+  --blue: #004bae;
+  --sky: #93cdff;
+  --teal: #43c1c3;
+  --ink: #111;
+  --gray: #5d5d5d;
+  --light: #9aa0a8;
+  --rule: #e5e5e5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+section[id] { scroll-margin-top: 72px; }
+
+/* top nav */
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.topnav.scrolled {
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.brand {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.01em;
+  transition: color .25s ease;
+}
+.brand:hover { text-decoration: none; }
+.topnav nav { display: flex; gap: 28px; }
+.topnav nav a {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+  padding: 6px 0;
+  transition: color .25s ease;
+}
+.topnav nav a:hover { color: #fff; text-decoration: none; }
+.topnav.scrolled .brand { color: var(--navy); }
+.topnav.scrolled nav a { color: var(--gray); }
+.topnav.scrolled nav a:hover { color: var(--blue); }
+
+/* hero */
+.hero {
+  background: var(--navy) url(assets/hero-bg.jpg) center bottom / cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 128px 24px 92px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--sky);
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(38px, 6.5vw, 64px);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1.12;
+  margin: 14px 0 18px;
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,.72);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* about */
+.intro { padding: 52px 0 8px; }
+.intro-about {
+  font-size: 17px;
+  color: #222;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 20px;
+  margin-top: 34px;
+  padding: 26px 0;
+  border-top: 2px solid var(--navy);
+  border-bottom: 1px solid var(--rule);
+}
+.info-grid b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 5px;
+}
+.info-grid b svg, .attendance b svg { width: 15px; height: 15px; flex: 0 0 auto; }
+.info-grid span { font-size: 15.5px; color: #222; }
+.info-grid a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.attendance {
+  margin-top: 22px;
+  background: #f4f7fb;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+}
+.attendance b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.attendance p { font-size: 15px; color: #222; }
+.attendance p + p { margin-top: 12px; }
+.attendance strong { color: #b3261e; font-weight: 700; }
+.notice {
+  margin-top: 14px;
+  background: #fff8e1;
+  border-left: 3px solid #e0a800;
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+}
+.notice b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9a7b00;
+  margin-bottom: 6px;
+}
+.notice b svg { width: 15px; height: 15px; flex: 0 0 auto; }
+.notice p { font-size: 15px; color: #222; }
+
+/* schedule */
+.sched { padding: 46px 0 26px; }
+.sched-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.sched-head h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--navy);
+}
+#toggle-all {
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--gray);
+  background: none;
+  border: 1px solid #d7d9dd;
+  border-radius: 18px;
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: all .15s;
+}
+#toggle-all:hover { border-color: var(--blue); color: var(--blue); }
+
+.row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.col-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray);
+  padding-top: 18px;
+  white-space: nowrap;
+}
+.next-mark {
+  display: block;
+  width: max-content;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #0d8486;
+  background: #e3f6f6;
+  border: 1px solid #aee2e2;
+  border-radius: 5px;
+  padding: 1.5px 8px;
+  margin-top: 5px;
+}
+.next-mark[hidden] { display: none; }
+.row-next {
+  background: var(--navy2);
+  border: 1px solid var(--navy2);
+  border-radius: 10px;
+  padding: 2px 18px;
+  margin: 10px -19px;
+}
+.row-next .col-date { color: var(--sky); }
+.row-next .next-mark {
+  color: #8ee6e7;
+  background: rgba(67,193,195,.16);
+  border-color: rgba(67,193,195,.45);
+}
+.row-next h3.talk { color: #fff; }
+.row-next summary:hover h3.talk { color: var(--sky); }
+.row-next .who { color: rgba(255,255,255,.65); }
+.row-next .tag-online { background: rgba(255,255,255,.12); color: var(--sky); }
+.row-next .tag-area { background: rgba(255,255,255,.12); color: rgba(255,255,255,.78); }
+.row-next .chev { color: rgba(255,255,255,.55); }
+.row-next details[open] .chev { color: var(--sky); }
+.row-next .detail-bio p { color: rgba(255,255,255,.88); }
+.row-next .detail-bio .note { color: rgba(255,255,255,.6); }
+.row-next .detail-id { color: rgba(255,255,255,.65); }
+.row-next .detail-name { color: #fff; }
+.row-next .detail-list li::before { background: rgba(255,255,255,.4); }
+.row-next .detail-list a { color: var(--sky); }
+.row-next .detail-links a { color: var(--sky); }
+.row-next .logistics { color: rgba(255,255,255,.65); border-top-color: rgba(255,255,255,.18); }
+.row-next .btn-cal { color: var(--sky); border-color: rgba(147,205,255,.45); }
+.row-next .btn-cal:hover { background: rgba(255,255,255,.08); }
+@media (max-width: 640px) {
+  .row-next { margin: 10px -12px; padding: 2px 11px; }
+}
+
+details.col-main summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 16px 0;
+}
+details.col-main summary::-webkit-details-marker { display: none; }
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background: #f0f1f3;
+}
+.head { min-width: 0; flex: 1; }
+.prof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 10px 16px;
+  flex: 0 0 auto;
+  max-width: 560px;
+}
+.prof-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 64px;
+}
+.prof-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+}
+.row-next .prof-name { color: rgba(255,255,255,.75); }
+.talk-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: var(--blue);
+  vertical-align: -3px;
+  margin-right: 8px;
+}
+.talk-icon svg { width: 100%; height: 100%; display: block; }
+.row-next .talk-icon { color: var(--sky); }
+h3.talk {
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  transition: color .12s;
+}
+h3.talk.untitled { font-weight: 500; font-style: italic; color: var(--gray); }
+summary:hover h3.talk { color: var(--blue); }
+.who {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 7px;
+}
+.who + .who { margin-top: 6px; }
+.tag-area, .tag-online, .tag-req {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: 5px;
+  padding: 3px 9px;
+}
+.tag-area {
+  color: #5d6470;
+  background: #f1f2f5;
+}
+.tag-online {
+  color: var(--blue);
+  background: #eef4fc;
+}
+.tag-req {
+  font-weight: 700;
+  color: #b3261e;
+  background: #fdeeed;
+}
+.row-next .tag-req { background: rgba(255,255,255,.12); color: #ffb3ad; }
+.detail-bio strong.req { color: #b3261e; }
+.row-next .detail-bio strong.req { color: #ffb3ad; }
+.chev {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 22px; height: 22px;
+  color: #b9bec6;
+  transition: transform .18s;
+}
+details[open] .chev { transform: rotate(180deg); color: var(--blue); }
+
+.detail {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 28px;
+  padding: 6px 0 28px;
+}
+.detail-id { font-size: 13.5px; color: var(--gray); }
+.detail-name { color: var(--ink); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.detail-list { list-style: none; }
+.detail-list li {
+  position: relative;
+  padding-left: 13px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b9bec6;
+}
+.detail-links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.detail-links a { font-size: 13px; font-weight: 600; }
+.detail-bio p { font-size: 15px; color: #222; margin-bottom: 11px; max-width: 62ch; }
+.detail-bio .note { color: var(--gray); font-style: italic; }
+.logistics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+  font-size: 13.5px;
+  color: var(--gray);
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+  margin-top: 6px;
+}
+.logistics .btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.btn-cal {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--blue);
+  border: 1px solid #c3d4ec;
+  border-radius: 18px;
+  padding: 6px 15px;
+  white-space: nowrap;
+  transition: all .15s;
+}
+.btn-cal:hover { background: #eef4fc; text-decoration: none; }
+.btn-cal svg { width: 14px; height: 14px; }
+
+.row-off .off-label {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--light);
+  padding: 17px 0 22px;
+}
+
+/* footer */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,.65);
+  margin-top: 40px;
+  padding: 30px 0;
+  font-size: 13.5px;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+footer a { color: rgba(255,255,255,.85); }
+
+@media (max-width: 640px) {
+  .topnav nav { gap: 18px; }
+  .brand { font-size: 15px; }
+  .hero { padding: 60px 20px 52px; }
+  .info-grid { grid-template-columns: 1fr; gap: 16px; }
+  .row { grid-template-columns: 54px 1fr; gap: 10px; }
+  .col-date { font-size: 13px; padding-top: 19px; }
+  .thumb { width: 52px; height: 52px; }
+  .prof { gap: 6px; max-width: 116px; }
+  .prof-person { min-width: 0; }
+  .prof-name { display: none; }
+  .talk-icon { width: 17px; height: 17px; margin-right: 6px; }
+  details.col-main summary { gap: 12px; }
+  .detail { grid-template-columns: 1fr; gap: 16px; padding-left: 0; }
+  .logistics .btns { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="container topnav-in">
+    <a class="brand" href="#top">UNI111: Intro to CSE</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#schedule">Schedule</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <p class="hero-eyebrow">UNI111 &nbsp;Fall 2026</p>
+  <h1>Introduction to CSE</h1>
+  <p class="hero-sub">A first-year tour of computer science and engineering, from systems and HCI
+    to AI and security, taught by the CSE faculty.
+    Wednesdays 4:00&ndash;5:15 pm, <span style="white-space:nowrap">Room 104-E206</span>.</p>
+</div>
+
+
+<section class="intro" id="about">
+  <div class="container">
+    <p class="intro-about">Computer science and engineering powers the technologies that are improving the quality of our lives, from deep learning to the networks and cloud computing that connect everyone and everything. This course introduces first-year students to the major areas of computer science, including systems, HCI, AI, software engineering, security, and data science, through one- to two-week introductory lectures with hands-on exercises, alongside alumni career talks and a faculty Q&amp;A panel on students&rsquo; questions and the role of computer science in the AI era.</p>
+    <div class="info-grid">
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.6V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Time</b><span>Wednesdays, 4:00&ndash;5:15 pm</span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.8-4.1-4.8-7.6a4.8 4.8 0 1 1 9.6 0c0 3.5-4.8 7.6-4.8 7.6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="6.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>Location</b><span>Room E206, Building 104</span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="5.6" cy="5.4" r="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="11" cy="6.4" r="1.9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M1.6 13.4a4.2 4.2 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M11.4 10.4a3.4 3.4 0 0 1 3 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>For</b><span>First-year students</span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.2" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.8 13.8a5.2 5.2 0 0 1 10.4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Coordinator</b><span>Prof. <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a><br>
+        <a href="mailto:seongil.wi@unist.ac.kr">seongil.wi@unist.ac.kr</a></span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.2" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.8 13.8a5.2 5.2 0 0 1 10.4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Teaching Assistant</b><span><a href="https://mcy0325.github.io/" target="_blank" rel="noopener">Chaeyoung Moon</a><br>
+        <a href="mailto:mcy325@unist.ac.kr">mcy325@unist.ac.kr</a></span></div>
+      <div><b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 9.7 3l2.2-.2.6 2.1 1.9 1.1-.8 2 .8 2-1.9 1.1-.6 2.1-2.2-.2L8 14.4 6.3 13l-2.2.2-.6-2.1-1.9-1.1.8-2-.8-2 1.9-1.1.6-2.1 2.2.2Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="m5.7 8.1 1.6 1.6 3-3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Grading</b><span>Successful / Unsuccessful</span></div>
+    </div>
+    <div class="attendance">
+      <b><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2.5" width="10" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.8 1.5h4.4v2.2H5.8z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m5.7 9.3 1.7 1.7 3-3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Attendance</b>
+      <p>UNI111 is graded Successful / Unsuccessful, and attendance is the core requirement.
+      Attendance is taken at every session through the UNIST Mobile Attendance System. In
+      accordance with UNIST academic regulations, <strong>five or more absences result in an Unsuccessful (U)</strong>.
+      Attendance may also be manually re-checked at random during a session;
+      <strong>leaving after checking in (a.k.a., 출튀) counts as an immediate U</strong>.</p>
+      <p>If you are unable to attend a session due to <strong>unavoidable circumstances</strong> (something
+      beyond your control, not a matter of choice), provide supporting documents to the TA (Chaeyoung Moon)
+      and the absence will be counted as attendance.</p>
+    </div>
+    <div class="notice">
+      <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5v3l8-1v-1l-8-1Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M10.5 4.5 13 3v10l-2.5-1.5M4.5 9.7l.8 3.3h2l-.7-3.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Notice</b>
+      <p>The <a href="#week-14">Faculty Q&amp;A Panel</a> takes place on December 2 (Week 14). If there is
+      anything you are curious about, from studying computer science to careers,
+      <a href="https://forms.gle/Apa3yK2MfFKQHFRN7" target="_blank" rel="noopener">submit your questions in advance</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sched" id="schedule">
+  <div class="container">
+    <div class="sched-head">
+      <h2>Schedule</h2>
+      <button type="button" id="toggle-all">Expand all</button>
+    </div>
+      <div class="row" data-date="2026-09-02" id="week-1">
+        <div class="col-date">Sep 2<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Orientation</h3>
+              <p class="who"><span class="tag-area">Course Intro</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/seongilwi.jpg" alt="Seongil Wi" loading="lazy">
+                <span class="prof-name">Prof. Seongil Wi</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Seongil Wi</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>WebSec Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Seongil Wi is an assistant professor in the Department of Computer Science and Engineering, where he leads the Web Security Lab. He received his Ph.D. from KAIST, and his research focuses on finding and fixing security vulnerabilities in web applications, browsers, and, more recently, AI-powered web systems and agents.</p>
+              <p>The first session gives a bird&rsquo;s-eye view of what computer science and engineering is, introduces the topics and professors you will meet this semester, and explains how the course will run.</p>
+              <div class="logistics">
+                <span>Week 1</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Orientation&dates=20260902T160000/20260902T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Seongil%20Wi%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-09-09" id="week-2">
+        <div class="col-date">Sep 9<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Computer Systems</h3>
+              <p class="who"><span class="tag-area">Part 1 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/ranggihwang.jpg" alt="Ranggi Hwang" loading="lazy">
+                <span class="prof-name">Prof. Ranggi Hwang</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Ranggi Hwang</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Computer Architecture and Co-design Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://sites.google.com/view/unist-cocolab/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Ranggi Hwang is an assistant professor in the Department of Computer Science and Engineering, where he leads the Computer Architecture and Co-design Lab (CoCoLab). He received his Ph.D. in electrical engineering from KAIST and interned at NVIDIA Research and Microsoft Research Asia. His research spans computer architecture, hardware-software co-design for AI, and AI accelerator design.</p>
+              <p>These two weeks look under the hood of the computer: how processors, memory, and operating systems actually run your programs, and why building efficient systems matters more than ever in the AI era.</p>
+              <div class="logistics">
+                <span>Week 2</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Computer%20Systems%20I&dates=20260909T160000/20260909T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Ranggi%20Hwang%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-09-16" id="week-3">
+        <div class="col-date">Sep 16<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Computer Systems</h3>
+              <p class="who"><span class="tag-area">Part 2 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/ranggihwang.jpg" alt="Ranggi Hwang" loading="lazy">
+                <span class="prof-name">Prof. Ranggi Hwang</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Ranggi Hwang</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Computer Architecture and Co-design Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://sites.google.com/view/unist-cocolab/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Second week of the Computer Systems module: an introductory lecture and hands-on exercise continuing from last week, taught by Prof. Ranggi Hwang of the Computer Architecture and Co-design Lab (CoCoLab).</p>
+              <div class="logistics">
+                <span>Week 3</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Computer%20Systems%20II&dates=20260916T160000/20260916T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Ranggi%20Hwang%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-09-23" id="week-4">
+        <div class="col-date">Sep 23<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Human-Computer Interaction</h3>
+              <p class="who"><span class="tag-area">Part 1 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/seongkookheo.jpg" alt="Seongkook Heo" loading="lazy">
+                <span class="prof-name">Prof. Seongkook Heo</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Seongkook Heo</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Ultimate Interface Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://seongkookheo.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Seongkook Heo leads the Ultimate Interface Lab. He builds interaction techniques and devices that connect people, computers, and the physical world, aiming for interfaces that are expressive, efficient, and frictionless. His work has received best paper and honorable mention awards at CHI, MobileHCI, VRST, and ISS, along with a Meta Research Award.</p>
+              <p>These two weeks introduce human-computer interaction: how to design, prototype, and evaluate interfaces people actually enjoy using, including the interfaces we will need for working with AI.</p>
+              <div class="logistics">
+                <span>Week 4</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Human-Computer%20Interaction%20I&dates=20260923T160000/20260923T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Seongkook%20Heo%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-09-30" id="week-5">
+        <div class="col-date">Sep 30<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Human-Computer Interaction</h3>
+              <p class="who"><span class="tag-area">Part 2 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/seongkookheo.jpg" alt="Seongkook Heo" loading="lazy">
+                <span class="prof-name">Prof. Seongkook Heo</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Seongkook Heo</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Ultimate Interface Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://seongkookheo.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Second week of the Human-Computer Interaction module: an introductory lecture and hands-on exercise continuing from last week, taught by Prof. Seongkook Heo of the Ultimate Interface Lab.</p>
+              <div class="logistics">
+                <span>Week 5</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Human-Computer%20Interaction%20II&dates=20260930T160000/20260930T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Seongkook%20Heo%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="row" data-date="2026-10-07" id="week-6">
+        <div class="col-date">Oct 7<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Data Science</h3>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/junghoonkim.jpg" alt="Junghoon Kim" loading="lazy">
+                <span class="prof-name">Prof. Junghoon Kim</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Junghoon Kim</p>
+              <ul class="detail-list">
+                <li>Associate Professor</li>
+                <li>Data Mining Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://sites.google.com/view/junghoon-kim" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Junghoon Kim is an associate professor who leads the Data Mining Lab. He received his Ph.D. from Nanyang Technological University, and his research covers algorithms and data mining, including cohesive subgraph discovery, community detection, and social network analysis.</p>
+              <p>This week introduces data science: how to turn raw data into insight, and what data analysis looks like in practice, with a hands-on exercise.</p>
+              <div class="logistics">
+                <span>Week 6</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Data%20Science&dates=20261007T160000/20261007T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Junghoon%20Kim%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-10-14" id="week-7">
+        <div class="col-date">Oct 14<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk"><span class="talk-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Alumni Career Seminar</h3>
+              <p class="who"><span class="tag-area">졸업생 세미나</span> <span class="tag-req">Attendance required</span></p>
+              <p class="who"><span class="tag-online">In Korean</span> <span class="tag-online">Real-time English translation</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/injungchung.jpg" alt="Injung Chung" loading="lazy">
+                <span class="prof-name">Injung Chung</span>
+              </div>
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/myeonggyunhan.jpg" alt="Myeonggyun Han" loading="lazy">
+                <span class="prof-name">Prof. Myeonggyun Han</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Moderator</p>
+              <ul class="detail-list">
+                <li>Prof. Seongil Wi</li>
+                <li>WebSec Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Two UNIST CSE alumni return to share where computer science took them after graduation.</p>
+              <p><strong>정인중 (Injung Chung)</strong> is a director at Delightroom, the team behind the global alarm app Alarmy, and a founding member of CLASS101. He launched two startups during his studies and returned to finish his degree twelve years after first enrolling. <em>Topic: entrepreneurship.</em></p>
+              <p><strong>한명균 (Prof. Myeonggyun Han)</strong> is an assistant professor of computer science at Kyungpook National University. He completed both his B.S. and Ph.D. at UNIST and worked at ETRI before joining KNU. <em>Topic: research and academia.</em></p>
+              <p><strong class="req">Attendance is mandatory.</strong> Attendance is taken as usual, and missing this session results in an immediate <strong class="req">U (fail)</strong>.</p>
+              <p class="note">Given in Korean, with real-time English translation.</p>
+              <div class="logistics">
+                <span>Week 7</span>
+                <span>Moderated by Prof. Seongil Wi</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Alumni%20Career%20Seminar&dates=20261014T160000/20261014T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Injung%20Chung%20(Delightroom)%20and%20Prof.%20Myeonggyun%20Han%20(Kyungpook%20National%20University).&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row row-off" data-date="2026-10-21">
+        <div class="col-date">Oct 21</div>
+        <p class="off-label">No class (Midterm exam period)</p>
+      </div>
+
+      <div class="row" data-date="2026-10-28" id="week-9">
+        <div class="col-date">Oct 28<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Software Engineering</h3>
+              <p class="who"><span class="tag-area">Part 1 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/jooyongyi.jpg" alt="Jooyong Yi" loading="lazy">
+                <span class="prof-name">Prof. Jooyong Yi</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Jooyong Yi</p>
+              <ul class="detail-list">
+                <li>Associate Professor</li>
+                <li>LOFT (Lab of SOFTware)</li>
+              </ul>
+              <p class="detail-links"><a href="http://www.jooyongyi.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Jooyong Yi is an associate professor who heads LOFT (Lab of SOFTware). His group builds autonomous techniques that keep software trustworthy by automatically detecting bugs, fixing them, and verifying the fixes. This work has only grown more important now that AI systems write much of our software.</p>
+              <p>These two weeks introduce software engineering: how real-world software is designed, built, tested, and maintained, and what it takes for software to be something we can rely on.</p>
+              <div class="logistics">
+                <span>Week 9</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Software%20Engineering%20I&dates=20261028T160000/20261028T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Jooyong%20Yi%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="row" data-date="2026-11-04" id="week-10">
+        <div class="col-date">Nov 4<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Software Engineering</h3>
+              <p class="who"><span class="tag-area">Part 2 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/jooyongyi.jpg" alt="Jooyong Yi" loading="lazy">
+                <span class="prof-name">Prof. Jooyong Yi</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Jooyong Yi</p>
+              <ul class="detail-list">
+                <li>Associate Professor</li>
+                <li>LOFT (Lab of SOFTware)</li>
+              </ul>
+              <p class="detail-links"><a href="http://www.jooyongyi.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Second week of the Software Engineering module: an introductory lecture and hands-on exercise continuing from last week, taught by Prof. Jooyong Yi of LOFT (Lab of SOFTware).</p>
+              <div class="logistics">
+                <span>Week 10</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Software%20Engineering%20II&dates=20261104T160000/20261104T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Jooyong%20Yi%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-11-11" id="week-11">
+        <div class="col-date">Nov 11<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Artificial Intelligence</h3>
+              <p class="who"><span class="tag-area">Part 1 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/taesikgong.jpg" alt="Taesik Gong" loading="lazy">
+                <span class="prof-name">Prof. Taesik Gong</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Taesik Gong</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Ubiquitous AI Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://taesikgong.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Taesik Gong is an assistant professor in CSE and the AI Graduate School, where he leads the Ubiquitous AI Lab. He received his Ph.D. from the KAIST School of Computing, was a research scientist at Nokia Bell Labs, and received the Google Ph.D. Fellowship in machine learning. His research makes AI work in the real world, from on-device AI to human-centered applications.</p>
+              <p>These two weeks introduce artificial intelligence: what machine learning actually is, how models learn, and how AI is built into the products and systems around us, with hands-on exercises.</p>
+              <div class="logistics">
+                <span>Week 11</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Artificial%20Intelligence%20I&dates=20261111T160000/20261111T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Taesik%20Gong%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-11-18" id="week-12">
+        <div class="col-date">Nov 18<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Artificial Intelligence</h3>
+              <p class="who"><span class="tag-area">Part 2 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/taesikgong.jpg" alt="Taesik Gong" loading="lazy">
+                <span class="prof-name">Prof. Taesik Gong</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Taesik Gong</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>Ubiquitous AI Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://taesikgong.com/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Second week of the Artificial Intelligence module: an introductory lecture and hands-on exercise continuing from last week, taught by Prof. Taesik Gong of the Ubiquitous AI Lab.</p>
+              <div class="logistics">
+                <span>Week 12</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Artificial%20Intelligence%20II&dates=20261118T160000/20261118T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Taesik%20Gong%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-11-25" id="week-13">
+        <div class="col-date">Nov 25<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Computer Security</h3>
+              <p class="who"><span class="tag-area">Part 1 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/minkyungpark.jpg" alt="Minkyung Park" loading="lazy">
+                <span class="prof-name">Prof. Minkyung Park</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Minkyung Park</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>System and Network Security Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://alsroad.github.io/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Minkyung Park is an assistant professor who leads the System and Network Security Lab (SANSL). She received her Ph.D. from Seoul National University and was a postdoctoral researcher at the University of Texas at Dallas before joining UNIST in 2026. Her research protects user data and makes computing systems more secure, from software vulnerability analysis to privacy-preserving computation.</p>
+              <p>These two weeks introduce computer security: how systems get attacked, how we defend them, and why security thinking matters for every computer scientist.</p>
+              <div class="logistics">
+                <span>Week 13</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Computer%20Security%20I&dates=20261125T160000/20261125T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Minkyung%20Park%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="row" data-date="2026-12-02" id="week-14">
+        <div class="col-date">Dec 2<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk"><span class="talk-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-3.5 3v-3H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M19.5 9.5h.5a2 2 0 0 1 2 2v3.5a2 2 0 0 1-2 2h-1v2.5l-2.5-2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>Faculty Q&amp;A Panel</h3>
+              <p class="who"><span class="tag-area">Panel Show</span> <span class="tag-req">Attendance required</span></p>
+              <p class="who"><span class="tag-online">In Korean</span> <span class="tag-online">Real-time English translation</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/jooyongyi.jpg" alt="Jooyong Yi" loading="lazy">
+                <span class="prof-name">Prof. Jooyong Yi</span>
+              </div>
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/hyungonmoon.jpg" alt="Hyungon Moon" loading="lazy">
+                <span class="prof-name">Prof. Hyungon Moon</span>
+              </div>
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/seongkookheo.jpg" alt="Seongkook Heo" loading="lazy">
+                <span class="prof-name">Prof. Seongkook Heo</span>
+              </div>
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/taehwankim.jpg" alt="Taehwan Kim" loading="lazy">
+                <span class="prof-name">Prof. Taehwan Kim</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Panelists</p>
+              <ul class="detail-list">
+                <li><a href="http://www.jooyongyi.com/" target="_blank" rel="noopener">Prof. Jooyong Yi</a></li>
+                <li><a href="https://hyungon.unist.ac.kr/" target="_blank" rel="noopener">Prof. Hyungon Moon</a></li>
+                <li><a href="https://seongkookheo.com/" target="_blank" rel="noopener">Prof. Seongkook Heo</a></li>
+                <li><a href="https://sites.google.com/view/taehwankim" target="_blank" rel="noopener">Prof. Taehwan Kim</a></li>
+              </ul>
+            </div>
+            <div class="detail-bio">
+              <p>Four CSE professors introduce themselves and their fields, then open the floor for an ask-anything panel show: studying computer science, choosing a direction, career paths, and the role of computer science in the AI era.</p>
+              <p><strong class="req">Attendance is mandatory.</strong> Attendance is taken as usual, and missing this session results in an immediate <strong class="req">U (fail)</strong>.</p>
+              <p class="note">Given in Korean, with real-time English translation.</p>
+              <div class="logistics">
+                <span>Week 14</span>
+                <span>Moderated by Prof. Seongil Wi</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://forms.gle/Apa3yK2MfFKQHFRN7" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2.5" width="10" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 5.8h5M5.5 8.2h5M5.5 10.6h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Pre-survey</a><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Faculty%20Q%26A%20Panel&dates=20261202T160000/20261202T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Panel%20with%20Profs.%20Jooyong%20Yi%2C%20Hyungon%20Moon%2C%20Seongkook%20Heo%2C%20and%20Taehwan%20Kim.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row" data-date="2026-12-09" id="week-15">
+        <div class="col-date">Dec 9<span class="next-mark" hidden>Next</span></div>
+        <details class="col-main">
+          <summary>
+            <div class="head">
+              <h3 class="talk">Computer Security</h3>
+              <p class="who"><span class="tag-area">Part 2 of 2</span></p>
+            </div>
+            <div class="prof">
+              <div class="prof-person">
+                <img class="thumb" src="assets/speakers/minkyungpark.jpg" alt="Minkyung Park" loading="lazy">
+                <span class="prof-name">Prof. Minkyung Park</span>
+              </div>
+            </div>
+            <span class="chev" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3.5 5.25 7 8.75l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="detail">
+            <div class="detail-id">
+              <p class="detail-name">Prof. Minkyung Park</p>
+              <ul class="detail-list">
+                <li>Assistant Professor</li>
+                <li>System and Network Security Lab</li>
+              </ul>
+              <p class="detail-links"><a href="https://alsroad.github.io/" target="_blank" rel="noopener">Homepage</a></p>
+            </div>
+            <div class="detail-bio">
+              <p>Second week of the Computer Security module: an introductory lecture and hands-on exercise continuing from Week 13, taught by Prof. Minkyung Park of the System and Network Security Lab (SANSL).</p>
+              <div class="logistics">
+                <span>Week 15</span>
+                <span>Room 104-E206, 4:00&ndash;5:15 pm</span>
+                <span class="btns"><a class="btn-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UNI111%3A%20Computer%20Security%20II&dates=20261209T160000/20261209T171500&ctz=Asia/Seoul&details=UNI111%20Introduction%20to%20Computer%20Science%20and%20Engineering.%20Prof.%20Minkyung%20Park%2C%20UNIST.&location=Room%20E206%2C%20Building%20104%2C%20UNIST" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.2h12M5.2 1.8v2.6M10.8 1.8v2.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+                  Add to Google Calendar</a></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="row row-off" data-date="2026-12-16">
+        <div class="col-date">Dec 16</div>
+        <p class="off-label">No class (Final exam period)</p>
+      </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>&copy; <a href="https://websec-lab.github.io/" target="_blank" rel="noopener">WebSec Lab</a> all rights reserved.</span>
+    <span><a href="https://cse.unist.ac.kr/cse/index.do" target="_blank" rel="noopener">Department of Computer Science and Engineering</a>, UNIST</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }));
+  var next = null;
+  document.querySelectorAll(".row[data-date]").forEach(function (r) {
+    var d = new Date(r.dataset.date + "T17:15:00+09:00");
+    if (!next && d >= now && !r.classList.contains("row-off")) next = r;
+  });
+  if (next) {
+    next.classList.add("row-next");
+    var m = next.querySelector(".next-mark");
+    if (m) m.hidden = false;
+  }
+
+  var nav = document.querySelector(".topnav");
+  function onScroll() {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  function expand(d) {
+    var c = d.querySelector(".detail");
+    d.open = true;
+    var h = c.scrollHeight;
+    c.style.overflow = "hidden";
+    c.style.height = "0px";
+    c.style.opacity = "0";
+    requestAnimationFrame(function () {
+      c.style.transition = "height .3s ease, opacity .3s ease";
+      c.style.height = h + "px";
+      c.style.opacity = "1";
+    });
+    c.addEventListener("transitionend", function te(ev) {
+      if (ev.propertyName !== "height") return;
+      c.style.height = c.style.overflow = c.style.transition = c.style.opacity = "";
+      c.removeEventListener("transitionend", te);
+    });
+  }
+
+  function collapse(d) {
+    var c = d.querySelector(".detail");
+    c.style.overflow = "hidden";
+    c.style.height = c.scrollHeight + "px";
+    requestAnimationFrame(function () {
+      c.style.transition = "height .25s ease, opacity .25s ease";
+      c.style.height = "0px";
+      c.style.opacity = "0";
+    });
+    c.addEventListener("transitionend", function te(ev) {
+      if (ev.propertyName !== "height") return;
+      d.open = false;
+      c.style.height = c.style.overflow = c.style.transition = c.style.opacity = "";
+      c.removeEventListener("transitionend", te);
+    });
+  }
+
+  document.querySelectorAll("details.col-main").forEach(function (d) {
+    d.querySelector("summary").addEventListener("click", function (e) {
+      e.preventDefault();
+      if (d.open) {
+        collapse(d);
+      } else {
+        document.querySelectorAll("details.col-main[open]").forEach(function (o) {
+          if (o !== d) collapse(o);
+        });
+        expand(d);
+      }
+    });
+  });
+
+  var btn = document.getElementById("toggle-all");
+  var open = false;
+  btn.addEventListener("click", function () {
+    open = !open;
+    document.querySelectorAll("details.col-main").forEach(function (d) { d.open = open; });
+    btn.textContent = open ? "Collapse all" : "Expand all";
+  });
+})();
+</script>
+</body>
+</html>
