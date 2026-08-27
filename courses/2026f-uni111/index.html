@@ -206,6 +206,23 @@ section[id] { scroll-margin-top: 72px; }
   background: #d4a017;
 }
 .notice li + li { margin-top: 10px; }
+.link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--blue);
+  background: #fff;
+  border: 1px solid #c3d4ec;
+  border-radius: 14px;
+  padding: 2px 11px;
+  vertical-align: -2px;
+  transition: all .15s;
+}
+.link-pill:hover { background: #eef4fc; text-decoration: none; }
+.link-pill svg { width: 12px; height: 12px; flex: 0 0 auto; }
+
 .rank-sec { padding: 46px 0 0; }
 .rank-sec h2 {
   font-size: 26px;
@@ -256,6 +273,9 @@ section[id] { scroll-margin-top: 72px; }
   justify-content: space-between;
 }
 .rank-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13.5px;
   font-weight: 600;
   color: var(--gray);
@@ -265,6 +285,7 @@ section[id] { scroll-margin-top: 72px; }
   transition: all .15s;
 }
 .rank-more:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+.rank-more svg { width: 12px; height: 12px; flex: 0 0 auto; }
 
 /* schedule */
 .sched { padding: 46px 0 26px; }
@@ -666,13 +687,12 @@ footer a { color: rgba(255,255,255,.85); }
       <ul>
         <li>The <a href="#week-14">Faculty Q&amp;A Panel</a> takes place on December 2 (Week 14). If there is
         anything you are curious about, from studying computer science to careers,
-        <a href="https://forms.gle/Apa3yK2MfFKQHFRN7" target="_blank" rel="noopener">submit your questions in advance</a>.</li>
+        <a class="link-pill" href="https://forms.gle/Apa3yK2MfFKQHFRN7" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2.5" width="10" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 5.8h5M5.5 8.2h5M5.5 10.6h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>submit your questions in advance</a>.</li>
         <li>We keep a <a href="score.html">participation score</a>, and the top 3 students will each receive a
         배달의민족 (Baemin) gift card at the end of the semester. You earn points when
         (1) you ask a question during class, or (2) the professor teaching that session acknowledges
         your contribution. If you did either of these, after the class,
-        <strong><a href="mailto:mcy325@unist.ac.kr">email the TA (Chaeyoung Moon)</a>
-        with the professor of that session in CC, describing what you did in that class</strong>.
+        <a class="link-pill" href="https://forms.gle/p9tsybsfT7EgpuCp8" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2.5" width="10" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 5.8h5M5.5 8.2h5M5.5 10.6h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>claim your points</a>.
         The TA will then award your points.</li>
       </ul>
     </div>
@@ -683,7 +703,7 @@ footer a { color: rgba(255,255,255,.85); }
   <div class="container">
     <div class="rank-head">
       <h2>Participation Rank (Real time)</h2>
-      <a class="rank-more" href="score.html">Full scoreboard</a>
+      <a class="rank-more" href="score.html">Scoreboard<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 3.5H3.5A1.5 1.5 0 0 0 2 5v7.5A1.5 1.5 0 0 0 3.5 14H11a1.5 1.5 0 0 0 1.5-1.5V9.5M9.5 2H14v4.5M14 2 7.5 8.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="rank-grid">
       <div class="rank-card">
