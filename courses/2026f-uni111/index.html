@@ -284,6 +284,7 @@ section[id] { scroll-margin-top: 72px; }
 
 .rank-card.wide { grid-column: 1 / -1; }
 .rank-card .rank-info > span.tbd { font-size: 15.5px; font-weight: 400; color: var(--light); font-style: italic; }
+.tier-open { display: block; margin-top: 3px; font-size: 14px; font-weight: 400; font-style: italic; color: var(--light); letter-spacing: 0; line-height: 1.4; }
 .rank-head {
   display: flex;
   align-items: baseline;
@@ -1522,9 +1523,19 @@ footer a { color: rgba(255,255,255,.85); }
       var t = pos === 1 ? 1 : pos <= 3 ? 2 : pos <= 6 ? 3 : pos <= 20 ? 4 : 0;
       if (t) tiers[t].push(e.id);
     });
+    var caps = { 1: 1, 2: 2, 3: 3, 4: 14 };
     for (var t2 = 1; t2 <= 4; t2++) {
       var el = document.getElementById("tier-" + t2);
-      if (el && tiers[t2].length) { el.textContent = tiers[t2].join(", "); el.classList.remove("tbd"); }
+      if (!el || !tiers[t2].length) continue;
+      el.textContent = tiers[t2].join(", ");
+      el.classList.remove("tbd");
+      var open = caps[t2] - tiers[t2].length;
+      if (open > 0) {
+        var sp = document.createElement("span");
+        sp.className = "tier-open";
+        sp.textContent = "(" + open + (open === 1 ? " spot" : " spots") + " still open)";
+        el.appendChild(sp);
+      }
     }
   }).catch(function () {});
 })();
