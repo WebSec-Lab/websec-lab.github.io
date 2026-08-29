@@ -364,8 +364,8 @@ footer a { color: rgba(255,255,255,.85); }
 <div class="page-head">
   <p class="page-eyebrow">UNI111 &nbsp;Fall 2026</p>
   <h1>Participation Score</h1>
-  <p class="page-sub">Ask questions, get involved, and climb the board. The top 3 students at the end
-    of the semester each receive a 배달의민족 (Baemin) gift card.</p>
+  <p class="page-sub">Ask questions, get involved, and climb the board. The top 20 students at the end
+    of the semester receive 배달의민족 (Baemin) gift cards.</p>
 </div>
 
 <section class="trend-sec">
@@ -456,6 +456,23 @@ footer a { color: rgba(255,255,255,.85); }
 
   var body = document.getElementById("score-body");
   var updated = document.getElementById("updated");
+  function attainOf(e) {
+    if (!e.cum || e.score <= 0) return 1e9;
+    for (var j = 0; j < e.cum.length; j++) if (e.cum[j] >= e.score) return j;
+    return 1e9;
+  }
+  function cmpRank(a, b) {
+    if (b.score !== a.score) return b.score - a.score;
+    var aa = attainOf(a), ab = attainOf(b);
+    if (aa !== ab) return aa - ab;
+    var n = Math.max(a.cum ? a.cum.length : 0, b.cum ? b.cum.length : 0);
+    for (var j = 0; j < n; j++) {
+      var va = (a.cum && a.cum[j]) || 0, vb = (b.cum && b.cum[j]) || 0;
+      if (va !== vb) return vb - va;
+    }
+    return a.id.localeCompare(b.id);
+  }
+
   var chartData = null;
   var chartCtx = null;
   var chartPinned = {};
@@ -570,7 +587,7 @@ footer a { color: rgba(255,255,255,.85); }
     applyState();
 
     legend.innerHTML = "";
-    var scoringSorted = scoring.slice().sort(function (a, b) { return b.final - a.final || a.id.localeCompare(b.id); });
+    var scoringSorted = scoring.slice().sort(cmpRank);
     scoringSorted.forEach(function (m) {
       var k2 = m.groupK;
       var sp = document.createElement("span");
@@ -743,18 +760,17 @@ footer a { color: rgba(255,255,255,.85); }
     });
     list.forEach(function (e) { e.color = colorMap[e.id]; });
     if (!list.length) return fail("No students on the board yet.");
-    list.sort(function (a, b) { return b.score - a.score || a.id.localeCompare(b.id); });
+    list.sort(cmpRank);
 
     body.innerHTML = "";
-    var rank = 0, prevScore = null, ranked = 0;
+    var pos = 0;
     list.forEach(function (e) {
       var tr = document.createElement("tr");
       var rankLabel = "";
       if (e.score > 0) {
-        ranked++;
-        if (e.score !== prevScore) { rank = ranked; prevScore = e.score; }
-        rankLabel = String(rank);
-        if (rank <= 3) tr.className = "top3";
+        pos++;
+        rankLabel = String(pos);
+        if (pos <= 20) tr.className = "top3";
       }
       var td1 = document.createElement("td");
       td1.className = "rank-cell num";
