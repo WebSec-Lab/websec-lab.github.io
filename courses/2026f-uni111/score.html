@@ -484,10 +484,21 @@ footer a { color: rgba(255,255,255,.85); }
 
   function drawChart() {
     if (!chartData) return;
-    var labels = chartData.labels;
+    // trim the x-axis at the last session where anyone scored
+    var lastIdx = -1;
+    chartData.list.forEach(function (e) {
+      for (var j = e.cum.length - 1; j >= 0; j--) {
+        if (e.cum[j] > (j > 0 ? e.cum[j - 1] : 0)) {
+          if (j > lastIdx) lastIdx = j;
+          break;
+        }
+      }
+    });
+    if (lastIdx < 0) lastIdx = chartData.labels.length - 1;
+    var labels = chartData.labels.slice(0, lastIdx + 1);
     // every line starts from 0 at a short lead-in before the first session
     var list = chartData.list.map(function (e) {
-      return { id: e.id, score: e.score, color: e.color, cum: [0].concat(e.cum) };
+      return { id: e.id, score: e.score, color: e.color, cum: [0].concat(e.cum.slice(0, lastIdx + 1)) };
     });
     var legend = document.getElementById("chart-legend");
     var wrap = document.getElementById("chart-wrap");

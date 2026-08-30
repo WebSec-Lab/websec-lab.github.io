@@ -273,7 +273,8 @@ section[id] { scroll-margin-top: 72px; }
 .staff-name { font-size: 17.5px; font-weight: 800; color: var(--ink); margin-top: 1px; }
 .staff-name a { color: inherit; }
 .staff-meta { font-size: 13.5px; color: var(--gray); margin-top: 4px; line-height: 1.55; }
-.staff-mail { font-size: 13.5px; color: var(--gray); margin-top: 4px; }
+.staff-line { display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--gray); margin-top: 4px; }
+.staff-line svg { width: 13px; height: 13px; flex: 0 0 auto; color: var(--light); }
 
 /* lab sessions */
 .labs { padding: 46px 0 6px; }
@@ -463,6 +464,7 @@ footer a { color: rgba(255,255,255,.85); }
   .info-grid { grid-template-columns: 1fr; gap: 16px; }
   .staff-grid { grid-template-columns: 1fr; }
   .staff-card { flex-direction: column; text-align: center; gap: 12px; padding: 24px 22px; }
+  .staff-line { justify-content: center; }
   .row { grid-template-columns: 58px 1fr; gap: 10px; }
   .col-date { font-size: 13px; }
   .col-due { grid-column: 2; text-align: left; padding: 0 0 14px; margin-top: -6px; }
@@ -490,7 +492,7 @@ footer a { color: rgba(255,255,255,.85); }
 </header>
 
 <div class="hero" id="top">
-  <p class="hero-eyebrow">CSE48001 &nbsp;Special Topic in CSE I &nbsp;Fall 2026</p>
+  <p class="hero-eyebrow">CSE480 &nbsp;Special Topic in CSE I &nbsp;Fall 2026</p>
   <h1>Web Security</h1>
   <p class="hero-sub">Learn real web attacks by conducting them yourself in weekly hands-on labs.
     Tuesdays &amp; Thursdays 2:30&ndash;3:45 pm, Room 106-T205.</p>
@@ -553,8 +555,9 @@ footer a { color: rgba(255,255,255,.85); }
         <div class="staff-info">
           <p class="staff-role">Instructor</p>
           <p class="staff-name"><a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a></p>
-          <p class="staff-meta">Assistant Professor, WebSec Lab / Room 301-8, Building 106</p>
-          <p class="staff-mail">seongil.wi@unist.ac.kr</p>
+          <p class="staff-meta">Assistant Professor, WebSec Lab</p>
+          <p class="staff-line"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.8-4.1-4.8-7.6a4.8 4.8 0 1 1 9.6 0c0 3.5-4.8 7.6-4.8 7.6Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="8" cy="6.8" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>Room 301-8, Building 106</p>
+          <p class="staff-line"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="3.2" width="12.4" height="9.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m2.6 4.6 5.4 4.1 5.4-4.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>seongil.wi@unist.ac.kr</p>
         </div>
       </div>
       <div class="staff-card">
@@ -563,7 +566,7 @@ footer a { color: rgba(255,255,255,.85); }
           <p class="staff-role">Teaching Assistant</p>
           <p class="staff-name"><a href="https://mingijunggrape.github.io/" target="_blank" rel="noopener">Mingi Jung</a></p>
           <p class="staff-meta">Master&rsquo;s Student, WebSec&nbsp;Lab</p>
-          <p class="staff-mail">wjdaslrl4475@unist.ac.kr</p>
+          <p class="staff-line"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="3.2" width="12.4" height="9.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m2.6 4.6 5.4 4.1 5.4-4.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>wjdaslrl4475@unist.ac.kr</p>
         </div>
       </div>
       <div class="staff-card">
@@ -572,7 +575,7 @@ footer a { color: rgba(255,255,255,.85); }
           <p class="staff-role">Teaching Assistant</p>
           <p class="staff-name"><a href="https://baejaeho18.github.io/" target="_blank" rel="noopener">Jaeho Bae</a></p>
           <p class="staff-meta">Master&rsquo;s Student, WebSec&nbsp;Lab</p>
-          <p class="staff-mail">bjho@unist.ac.kr</p>
+          <p class="staff-line"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.8" y="3.2" width="12.4" height="9.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m2.6 4.6 5.4 4.1 5.4-4.1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>bjho@unist.ac.kr</p>
         </div>
       </div>
     </div>
