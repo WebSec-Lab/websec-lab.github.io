@@ -573,8 +573,23 @@ details[open] .chev { transform: rotate(180deg); color: var(--blue); }
 }
 .tag-slides:hover { background: #eef4fc; }
 .tag-slides svg { width: 12px; height: 12px; flex: 0 0 auto; }
+.tag-slides.is-disabled,
+.tag-slides:disabled {
+  color: var(--light);
+  border-color: #d7d9dd;
+  background: #f7f8fa;
+  cursor: not-allowed;
+}
+.tag-slides.is-disabled:hover,
+.tag-slides:disabled:hover { background: #f7f8fa; }
 .row-next .tag-slides { background: transparent; color: var(--sky); border-color: rgba(147,205,255,.45); }
 .row-next .tag-slides:hover { background: rgba(255,255,255,.08); }
+.row-next .tag-slides.is-disabled,
+.row-next .tag-slides:disabled {
+  color: rgba(255,255,255,.5);
+  border-color: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+}
 
 .row-off .off-label {
   font-size: 15px;
@@ -1433,12 +1448,42 @@ footer a { color: rgba(255,255,255,.85); }
     });
   });
 
-  document.querySelectorAll(".tag-slides").forEach(function (b) {
+  function bindSlideButton(b) {
     b.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
+      if (!b.dataset.slideUrl || b.disabled) return;
+      var w = window.open(b.dataset.slideUrl, "_blank", "noopener");
+      if (w) w.opener = null;
     });
-  });
+  }
+
+  function setSlideButtonState(b, slide) {
+    if (slide && slide.url) {
+      b.dataset.slideUrl = slide.url;
+      b.disabled = false;
+      b.classList.remove("is-disabled");
+      b.removeAttribute("aria-disabled");
+      b.title = "Open slides in a new tab";
+      return;
+    }
+    delete b.dataset.slideUrl;
+    b.disabled = true;
+    b.classList.add("is-disabled");
+    b.setAttribute("aria-disabled", "true");
+    b.title = "Slides will appear here after upload.";
+  }
+
+  function applySlideData(slides) {
+    document.querySelectorAll(".row[data-date] .tag-slides").forEach(function (b) {
+      var row = b.closest(".row[data-date]");
+      if (!row) return;
+      var slide = slides[row.id] || slides[row.dataset.date] || null;
+      setSlideButtonState(b, slide);
+    });
+  }
+
+  document.querySelectorAll(".tag-slides").forEach(bindSlideButton);
 
   var btn = document.getElementById("toggle-all");
   var open = false;
@@ -1449,6 +1494,8 @@ footer a { color: rgba(255,255,255,.85); }
   });
 
   var SHEET_CSV = "https://docs.google.com/spreadsheets/d/1MjO-9Xya_m8ikA0bQ3XsBD4a_IacXnNoa_zBMBm1c28/export?format=csv&gid=0";
+  var SLIDES_CSV = "https://docs.google.com/spreadsheets/d/1iUXNaKD_OO93q23KA1jIaraRaRKQIaZs2uGQb1qTU6Y/export?format=csv&gid=0";
+
   function parseCSV(t) {
     var rows = [], row = [], cur = "", q = false;
     for (var i = 0; i < t.length; i++) {
@@ -1466,6 +1513,39 @@ footer a { color: rgba(255,255,255,.85); }
     if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
     return rows;
   }
+
+  function headerIndex(head, names) {
+    for (var i = 0; i < names.length; i++) {
+      var idx = head.indexOf(names[i]);
+      if (idx >= 0) return idx;
+    }
+    return -1;
+  }
+
+  fetch(SLIDES_CSV + (SLIDES_CSV.indexOf("?") >= 0 ? "&" : "?") + "cb=" + Date.now(), { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.text();
+  }).then(function (t) {
+    var rows = parseCSV(t);
+    var slides = {};
+    if (!rows.length) return applySlideData(slides);
+    var head = rows[0].map(function (h) { return h.trim().toLowerCase(); });
+    var keyI = headerIndex(head, ["week", "key", "id", "session"]);
+    var dateI = headerIndex(head, ["date"]);
+    var urlI = headerIndex(head, ["url", "slides", "slide url", "pdf", "pdf url"]);
+    rows.slice(1).forEach(function (r) {
+      var key = keyI >= 0 ? (r[keyI] || "").trim() : "";
+      var date = dateI >= 0 ? (r[dateI] || "").trim() : "";
+      var url = urlI >= 0 ? (r[urlI] || "").trim() : "";
+      var entry = { url: url };
+      if (key) slides[key] = entry;
+      if (date) slides[date] = entry;
+    });
+    applySlideData(slides);
+  }).catch(function () {
+    applySlideData({});
+  });
+
   fetch(SHEET_CSV + "&cb=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (t) {
     var rows = parseCSV(t);
     if (!rows.length) return;
