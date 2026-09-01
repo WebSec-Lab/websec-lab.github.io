@@ -282,6 +282,9 @@ section[id] { scroll-margin-top: 72px; }
 .labs .notebox a { font-weight: 600; }
 .notebox-amber { background: #fdf6e0; border-left-color: #d99a06; }
 .notebox-amber b { color: #8a5a00; }
+.notebox ul { list-style: none; margin-top: 8px; }
+.notebox ul li { position: relative; padding-left: 14px; font-size: 15px; color: #222; margin-top: 4px; }
+.notebox ul li::before { content: ""; position: absolute; left: 1px; top: 10px; width: 4px; height: 4px; border-radius: 50%; background: #c9a24a; }
 
 /* schedule */
 .sched { padding: 46px 0 26px; }
@@ -593,8 +596,13 @@ footer a { color: rgba(255,255,255,.85); }
     <div class="notebox notebox-amber">
       <b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.2 1.8h3.6M7 1.8v4.1L3.2 12a2 2 0 0 0 1.8 2.9h6a2 2 0 0 0 1.8-2.9L9 5.9V1.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.9 9.5h6.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Lab Homepage</b>
       <p><a href="http://10.20.18.55:8280/" target="_blank" rel="noopener">http://10.20.18.55:8280/</a></p>
-      <p>Log in with the account your TA sent you by email.
-      To access the site from outside UNIST, turn on the UNIST VPN.</p>
+      <ul>
+        <li>Log in with the account your TA sent you by email.
+        To access the site from outside UNIST, turn on the UNIST VPN.</li>
+        <li><strong>Do not attack the CTF environments, including web services!</strong></li>
+        <li>If you think the services are not working properly or have any question,
+        please post your question on the Blackboard.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -625,7 +633,7 @@ footer a { color: rgba(255,255,255,.85); }
       <div class="row" data-date="2026-09-08">
         <div class="col-date">Sep 8<em>Tue</em></div>
         <div class="col-main">
-          <h3 class="talk">Web Programming Basic<a class="slides" aria-label="Slides"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="8.5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 11.5v2.5M5.5 14h5M6.3 8V6.8M8 8V5.5M9.7 8V7.3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Slides</a></h3>
+          <h3 class="talk">Security &amp; Web Programming Basic<a class="slides" aria-label="Slides"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="8.5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 11.5v2.5M5.5 14h5M6.3 8V6.8M8 8V5.5M9.7 8V7.3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Slides</a></h3>
         </div>
         <div class="col-due"><span class="next-mark" hidden>Next</span></div>
       </div>
