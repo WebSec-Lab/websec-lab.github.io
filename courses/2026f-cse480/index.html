@@ -881,6 +881,14 @@ footer a { color: rgba(255,255,255,.85); }
     if (m) m.hidden = false;
   }
 
+  document.querySelectorAll(".row[data-date] a.slides[href^='http://10.']").forEach(function (a) {
+    var d = new Date(a.closest(".row").dataset.date + "T00:00:00+09:00");
+    if (now < d) {
+      a.dataset.href = a.getAttribute("href");
+      a.removeAttribute("href");
+    }
+  });
+
   var nav = document.querySelector(".topnav");
   function onScroll() {
     nav.classList.toggle("scrolled", window.scrollY > 40);

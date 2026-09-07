@@ -239,6 +239,7 @@ section[id] { scroll-margin-top: 72px; }
   margin: 10px -19px;
 }
 .row-next .col-date { color: var(--sky); }
+.row.pre-next { border-bottom-color: transparent; }
 .row-next .next-mark {
   color: #8ee6e7;
   background: rgba(67,193,195,.16);
@@ -980,6 +981,8 @@ footer a { color: rgba(255,255,255,.85); }
   });
   if (next) {
     next.classList.add("row-next");
+    var prev = next.previousElementSibling;
+    if (prev && prev.classList.contains("row")) prev.classList.add("pre-next");
     var m = next.querySelector(".next-mark");
     if (m) m.hidden = false;
   }
