@@ -389,6 +389,7 @@ section[id] { scroll-margin-top: 72px; }
 .row-next .logistics { color: rgba(255,255,255,.65); border-top-color: rgba(255,255,255,.18); }
 .row-next .btn-cal { color: var(--sky); border-color: rgba(147,205,255,.45); }
 .row-next .btn-cal:hover { background: rgba(255,255,255,.08); }
+.row-before-next { border-bottom-color: transparent; }
 @media (max-width: 640px) {
   .row-next { margin: 10px -12px; padding: 2px 11px; }
 }
@@ -1376,6 +1377,8 @@ footer a { color: rgba(255,255,255,.85); }
     next.classList.add("row-next");
     var m = next.querySelector(".next-mark");
     if (m) m.hidden = false;
+    var prevRow = next.previousElementSibling;
+    if (prevRow && prevRow.classList.contains("row")) prevRow.classList.add("row-before-next");
   }
 
   var nav = document.querySelector(".topnav");
